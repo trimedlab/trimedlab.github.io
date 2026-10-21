@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Team | TriMED Lab | National Defense Medical University</title>
+  <meta name="theme-color" content="#0f172a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --primary: #0a0a0a;
+      --accent: #3b82f6;
+      --text: #1a1a1a;
+      --text-light: #6b7280;
+      --bg: #ffffff;
+      --bg-alt: #f9fafb;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+
+    body {
+      font-family: 'Inter', 'Noto Sans TC', sans-serif;
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    * { -webkit-tap-highlight-color: transparent; }
+
+    /* iOS Safari fixes */
+    @supports (-webkit-touch-callout: none) {
+      .team-hero { min-height: -webkit-fill-available; }
+    }
+
+    /* Minimum touch target size (44x44px) for iOS */
+    a, button, .lang-toggle button, .hamburger, .nav-links a,
+    .mobile-overlay-nav a, .team-avatar, .kpi-close {
+      min-height: 44px;
+      min-width: 44px;
+    }
+
+    img { max-width: 100%; height: auto; }
+
+    a, button, input, textarea, select { touch-action: manipulation; }
+
+    .lang-zh .en { display: none; }
+    .lang-zh .zh { display: inline; }
+    .lang-zh .en-block { display: none; }
+    .lang-zh .zh-block { display: block; }
+    .lang-zh .en-flex { display: none; }
+    .lang-zh .zh-flex { display: flex; }
+    .en { display: inline; }
+    .zh { display: none; }
+    .en-block { display: block; }
+    .zh-block { display: none; }
+    .en-flex { display: none; }
+    .zh-flex { display: none; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; width: 100%; z-index: 1000;
+      padding: 1.5rem 3rem; display: flex; justify-content: space-between;
+      align-items: center; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    nav.scrolled {
+      background: rgba(255,255,255,0.98); -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(20px); padding: 1rem 3rem; box-shadow: 0 1px 0 rgba(0,0,0,0.05);
+    }
+    .nav-logo {
+      display: inline-flex; align-items: center; flex: 0 0 auto; line-height: 0;
+      text-decoration: none;
+    }
+    .nav-logo img {
+      height: 46px; width: 42px; max-width: 42px; max-height: 46px;
+      object-fit: contain; object-position: center;
+      background: transparent; display: block;
+      filter: drop-shadow(0 0 1px rgba(255,255,255,0.85));
+    }
+    nav.scrolled .nav-logo img { filter: none; }
+    nav.scrolled .nav-logo { color: var(--primary); }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none; color: var(--text-light); font-size: 0.85rem;
+      font-weight: 500; letter-spacing: 0.05em; transition: all 0.5s; position: relative;
+    }
+    .nav-links a:hover { color: var(--primary); }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px;
+      background: currentColor; transition: width 0.3s;
+    }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-links a.active-link { color: var(--accent); }
+    .nav-links a.active-link::after { width: 100%; background: var(--accent); }
+    .lang-toggle {
+      display: flex; gap: 0; background: rgba(0,0,0,0.06); border-radius: 6px;
+      overflow: hidden; cursor: pointer; border: none; font-size: 0.8rem; font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+    .lang-toggle button {
+      background: transparent; color: var(--text-light); border: none;
+      padding: 0.4rem 0.75rem; cursor: pointer; font-size: 0.8rem; font-weight: 600;
+      font-family: inherit; letter-spacing: 0.05em; transition: all 0.3s;
+      -webkit-appearance: none; -moz-appearance: none; appearance: none;
+    }
+    .lang-toggle button.active { background: var(--accent); color: white; }
+    .lang-toggle button:hover:not(.active) { color: var(--text); }
+
+    .hamburger {
+      display: none; flex-direction: column; justify-content: center; align-items: center;
+      width: 44px; height: 44px; background: none; border: none; cursor: pointer;
+      padding: 0; z-index: 1002; position: relative;
+    }
+    .hamburger-line {
+      display: block; width: 24px; height: 2px; background: var(--primary); border-radius: 2px;
+      transition: all 0.3s ease; position: absolute;
+    }
+    .hamburger-line:nth-child(1) { transform: translateY(-7px); }
+    .hamburger-line:nth-child(2) { transform: translateY(0); }
+    .hamburger-line:nth-child(3) { transform: translateY(7px); }
+    .hamburger.active .hamburger-line:nth-child(1) { transform: rotate(45deg) translate(0, 0); }
+    .hamburger.active .hamburger-line:nth-child(2) { opacity: 0; }
+    .hamburger.active .hamburger-line:nth-child(3) { transform: rotate(-45deg) translate(0, 0); }
+
+    .mobile-overlay {
+      display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.97);
+      -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px); z-index: 1001;
+      flex-direction: column; justify-content: center; align-items: center;
+      opacity: 0; transition: opacity 0.4s ease;
+    }
+    .mobile-overlay.active { display: flex; opacity: 1; }
+    .mobile-overlay-nav { list-style: none; text-align: center; display: flex; flex-direction: column; gap: 2rem; }
+    .mobile-overlay-nav a {
+      text-decoration: none; color: white; font-size: 1.75rem; font-weight: 600;
+      letter-spacing: 0.05em; transition: color 0.3s; min-height: 44px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .mobile-overlay-nav a:hover { color: var(--accent); }
+    .mobile-overlay .lang-toggle { margin-top: 3rem; background: rgba(255,255,255,0.1); border-radius: 8px; }
+    .mobile-overlay .lang-toggle button { font-size: 1rem; padding: 0.6rem 1.5rem; color: rgba(255,255,255,0.6); }
+    .mobile-overlay .lang-toggle button.active { background: var(--accent); color: white; }
+
+    .team-hero {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+      padding: 10rem 3rem 6rem; text-align: center; color: white;
+    }
+    .team-hero .section-label { color: rgba(255,255,255,0.4); text-align: center; }
+    .section-label {
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 2rem; opacity: 0; transform: translateX(-20px);
+      transition: all 0.8s;
+    }
+    .section-label.visible { opacity: 1; transform: translateX(0); }
+    .team-hero h1 {
+      font-family: 'Playfair Display', 'Noto Sans TC', serif; font-size: 4rem;
+      font-weight: 700; color: white; margin-bottom: 1rem;
+    }
+    .team-hero p {
+      font-size: 1.15rem; color: rgba(255,255,255,0.7); max-width: 600px; margin: 0 auto;
+    }
+
+    .team { background: var(--bg); color: var(--text); padding: 8rem 3rem; overflow: hidden; }
+    .team-header { text-align: center; margin-bottom: 6rem; }
+    .team-header h2 {
+      font-family: 'Playfair Display', 'Noto Sans TC', serif; font-size: 4rem; color: var(--primary);
+      margin-bottom: 1rem; opacity: 0; transform: translateY(50px); transition: all 1s;
+    }
+    .team-header h2.visible { opacity: 1; transform: translateY(0); }
+    .team-header p { font-size: 1.15rem; color: var(--text-light); opacity: 0; transition: all 0.8s 0.3s; }
+    .team-header p.visible { opacity: 0.7; }
+
+    .alumni .team-header .section-label,
+    .teaching .team-header .section-label {
+      color: white !important;
+      opacity: 0;
+      transform: translateX(-20px);
+      transition: all 0.8s;
+    }
+    .alumni .team-header .section-label.visible,
+    .teaching .team-header .section-label.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .alumni .team-header h2,
+    .teaching .team-header h2 {
+      color: white !important;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 1s;
+    }
+    .alumni .team-header h2.visible,
+    .teaching .team-header h2.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .alumni .team-member h4 { color: #fff; }
+    .alumni .team-member p { color: rgba(255,255,255,0.75); }
+    .team-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 3rem;
+      max-width: 1200px; margin: 0 auto;
+    }
+    .team-member {
+      text-align: center; opacity: 0; transform: translateY(40px) scale(0.9); transition: all 0.8s;
+    }
+    .team-member.visible { opacity: 1; transform: translateY(0) scale(1); }
+    .team-member:nth-child(1) { transition-delay: 0s; }
+    .team-member:nth-child(2) { transition-delay: 0.15s; }
+    .team-member:nth-child(3) { transition-delay: 0.3s; }
+    .team-member:nth-child(4) { transition-delay: 0.45s; }
+    .team-avatar {
+      width: 160px; height: 160px; border-radius: 50%; margin: 0 auto 1.5rem; overflow: hidden;
+      border: 3px solid rgba(0,0,0,0.1);
+      transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .team-avatar-placeholder {
+      width: 100%; height: 100%; background: rgba(0,0,0,0.05);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3rem; font-weight: 700; color: rgba(0,0,0,0.15);
+    }
+    .team-member:hover .team-avatar { border-color: var(--accent); transform: translateY(-10px) scale(1.05); }
+    .team-member {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .team-member:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+    .teaching { overflow-wrap: break-word; scroll-margin-top: 5rem; }
+    .teaching p { color: rgba(255,255,255,0.86); }
+    .teaching div[style*="background:rgba(255,255,255,0.03)"] {
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .teaching div[style*="background:rgba(255,255,255,0.03)"]:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      border-color: var(--accent);
+    }
+    .team-member h4 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.25rem; }
+    .team-member p { font-size: 0.9rem; color: var(--text-light); }
+
+    .container { max-width: 1400px; margin: 0 auto; }
+
+    footer {
+      background: var(--primary); color: white; padding: 4rem 3rem;
+      padding-bottom: calc(4rem + env(safe-area-inset-bottom, 0px)); text-align: center;
+    }
+    footer p { font-size: 0.9rem; opacity: 0.5; }
+    .footer-links { display: flex; gap: 2rem; justify-content: center; margin-bottom: 1.5rem; flex-wrap: wrap; }
+    .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.85rem; transition: color 0.3s; }
+    .footer-links a:hover { color: white; }
+
+    @media (max-width: 1024px) {
+      .team-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      nav { padding: 0.65rem 1rem; flex-wrap: nowrap; }
+      .nav-logo img { height: 40px; width: 36px; max-width: 36px; max-height: 40px; }
+      section.teaching { padding: 4rem 1rem !important; }
+      .nav-links { display: none; }
+      .team-hero { padding: 8rem 1.5rem 4rem; }
+      .team-hero h1 { font-size: 2.5rem; }
+      .team { padding: 6rem 1.5rem; }
+      .team-grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
+    @media (max-width: 480px) {
+      .team-avatar { width: 120px; height: 120px; }
+      .team-member h4 { font-size: 1rem; }
+      .team-hero h1 { font-size: 2rem; }
+    }
+    @media print {
+      nav, .hamburger, .mobile-overlay, footer { display: none !important; }
+      body { color: #000; background: #fff; font-size: 12pt; }
+      .team-hero { background: none; padding: 2rem 0; color: #000; }
+      .team-hero h1 { color: #000; font-size: 24pt; }
+      .team-member { opacity: 1 !important; transform: none !important; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important; animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important; scroll-behavior: auto !important;
+      }
+      .team-header h2, .team-header p, .team-member { opacity: 1; transform: none; transition: none; }
+    }
+
+    /* KPI Modal */
+    .kpi-modal {
+      display: none; position: fixed; inset: 0; z-index: 2000;
+      background: rgba(0,0,0,0.8); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+      overflow-y: auto; padding: 2rem;
+    }
+    .kpi-modal.active { display: flex; justify-content: center; align-items: flex-start; }
+    .kpi-modal-content {
+      background: white; border-radius: 20px; max-width: 800px; width: 100%;
+      padding: 3rem; position: relative; margin: 2rem auto;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+    }
+    .kpi-close {
+      position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none;
+      font-size: 2rem; cursor: pointer; color: var(--text-light); transition: color 0.3s;
+      width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
+    }
+    .kpi-close:hover { color: var(--text); }
+    .kpi-header { display: flex; align-items: center; gap: 2rem; margin-bottom: 2.5rem; padding-bottom: 2rem; border-bottom: 1px solid #e5e7eb; }
+    .kpi-avatar {
+      width: 80px; height: 80px; border-radius: 50%; background: var(--primary); color: white;
+      display: flex; align-items: center; justify-content: center; font-size: 1.75rem; font-weight: 700;
+    }
+    .kpi-title h2 { font-family: 'Playfair Display', serif; font-size: 1.75rem; margin-bottom: 0.25rem; }
+    .kpi-subtitle { font-size: 1rem; color: var(--text-light); }
+    .kpi-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-bottom: 2.5rem;
+    }
+    .kpi-funding { font-size: 1.2rem; line-height: 1.25; }
+    .kpi-funding span { display: block; }
+    .kpi-scope { margin: 0 0 0.75rem; color: var(--text-light); font-size: 0.95rem; }
+    .kpi-card {
+      background: #f8fafc; border-radius: 12px; padding: 1.5rem; text-align: center;
+      border: 1px solid #e2e8f0;
+    }
+    .kpi-number { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--accent); margin-bottom: 0.5rem; }
+    .kpi-label { font-size: 0.8rem; color: var(--text-light); line-height: 1.4; }
+    .kpi-details { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+    .kpi-section h3 {
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 1rem;
+    }
+    .kpi-section ul { list-style: none; }
+    .kpi-section li {
+      font-size: 0.9rem; color: var(--text); padding: 0.5rem 0; border-bottom: 1px solid #f1f5f9;
+      line-height: 1.5;
+    }
+    .kpi-contact {
+      display: flex; gap: 2rem; justify-content: center; padding-top: 1.5rem;
+      border-top: 1px solid #e5e7eb; font-size: 0.9rem;
+    }
+    .kpi-contact a { color: var(--accent); text-decoration: none; font-weight: 500; }
+    .kpi-contact a:hover { text-decoration: underline; }
+    .pi-avatar:hover { border-color: var(--accent); transform: translateY(-10px) scale(1.05); }
+    @media (max-width: 768px) {
+      .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+      .kpi-details { grid-template-columns: 1fr; }
+      .kpi-header { flex-direction: column; text-align: center; }
+      .kpi-contact { flex-direction: column; align-items: center; gap: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav id="navbar" class="scrolled">
+    <a href="index.html" class="nav-logo"><img src="images/trimed-mark.png?v=mark" alt="TriMED" width="578" height="640"></a>
+    <ul class="nav-links">
+      <li><a href="index.html#home"><span class="en">Home</span><span class="zh">首頁</span></a></li>
+      <li><a href="index.html#about"><span class="en">About</span><span class="zh">關於</span></a></li>
+      <li><a href="index.html#research"><span class="en">Research</span><span class="zh">研究</span></a></li>
+      <li><a href="index.html#publications"><span class="en">Publications</span><span class="zh">論文</span></a></li>
+      <li><a href="team.html#team"><span class="en">Team</span><span class="zh">團隊</span></a></li>
+      <li><a href="team.html#alumni"><span class="en">Alumni</span><span class="zh">校友</span></a></li>
+      <li><a href="team.html#teaching"><span class="en">Courses &amp; Instruction</span><span class="zh">課程與教學</span></a></li>
+      <li><a href="index.html#contact"><span class="en">Contact</span><span class="zh">聯絡</span></a></li>
+      <li><a href="index.html#donate"><span class="en">Donate</span><span class="zh">捐款</span></a></li>
+    </ul>
+    <div class="lang-toggle">
+      <button id="btn-en" class="active" onclick="setLang('en')">EN</button>
+      <button id="btn-zh" onclick="setLang('zh')">中</button>
+    </div>
+    <button class="hamburger" id="hamburger-btn" aria-label="Toggle menu">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+  </nav>
+
+  <div class="mobile-overlay" id="mobile-overlay">
+    <ul class="mobile-overlay-nav">
+      <li><a href="index.html#home" class="mobile-nav-link"><span class="en">Home</span><span class="zh">首頁</span></a></li>
+      <li><a href="index.html#about" class="mobile-nav-link"><span class="en">About</span><span class="zh">關於</span></a></li>
+      <li><a href="index.html#research" class="mobile-nav-link"><span class="en">Research</span><span class="zh">研究</span></a></li>
+      <li><a href="index.html#publications" class="mobile-nav-link"><span class="en">Publications</span><span class="zh">論文</span></a></li>
+      <li><a href="team.html#team" class="mobile-nav-link"><span class="en">Team</span><span class="zh">團隊</span></a></li>
+      <li><a href="team.html#alumni" class="mobile-nav-link"><span class="en">Alumni</span><span class="zh">校友</span></a></li>
+      <li><a href="team.html#teaching" class="mobile-nav-link"><span class="en">Courses &amp; Instruction</span><span class="zh">課程與教學</span></a></li>
+      <li><a href="index.html#contact" class="mobile-nav-link"><span class="en">Contact</span><span class="zh">聯絡</span></a></li>
+      <li><a href="index.html#donate" class="mobile-nav-link"><span class="en">Donate</span><span class="zh">捐款</span></a></li>
+    </ul>
+    <div class="lang-toggle">
+      <button id="btn-en-mobile" onclick="setLang('en')">EN</button>
+      <button id="btn-zh-mobile" onclick="setLang('zh')">中</button>
+    </div>
+  </div>
+
+  <section class="team" id="team">
+    <div class="container">
+      <div class="team-hero" style="margin-bottom:3rem;">
+        <div class="kpi-header" style="display:flex;align-items:center;gap:2rem;flex-wrap:wrap;">
+          <div class="team-avatar pi-avatar" style="width:180px;height:180px;border-radius:50%;overflow:hidden;border:3px solid rgba(96,165,250,0.5);">
+            <img src="images/pi_avatar.svg" alt="Dr. Yen-Sheng Lin" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div class="kpi-title">
+            <h1 style="font-size:2rem;margin-bottom:0.5rem;"><span class="en">Yen-Sheng (Johnny) Lin, PhD, PMP</span><span class="zh">林彥聖 博士</span></h1>
+            <p class="kpi-subtitle" style="color:#93c5fd;font-size:1.1rem;"><span class="en">Director, TriMED Lab</span><span class="zh">TriMED 實驗室主任</span></p>
+            <p class="kpi-subtitle" style="color:#60a5fa;font-size:1rem;"><span class="en">Assistant Professor, Graduate Institute of Medical Sciences, National Defense Medical University</span><span class="zh">國防醫學大學醫學科學研究所助理教授</span></p>
+          </div>
+        </div>
+      </div>
+
+      <p class="kpi-scope"><span class="en">Laboratory totals</span><span class="zh">實驗室合計</span></p>
+      <div class="kpi-grid" style="margin:2rem 0;">
+        <div class="kpi-card">
+          <div class="kpi-number">20</div>
+          <div class="kpi-label"><span class="en">Peer-Reviewed Articles</span><span class="zh">同儕審查期刊論文</span></div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-number">7</div>
+          <div class="kpi-label"><span class="en">Trainee-Led Articles</span><span class="zh">學員第一作者論文</span></div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-number kpi-funding"><span>$452.5K</span><span>NT$8.76M</span></div>
+          <div class="kpi-label"><span class="en">Laboratory Funding</span><span class="zh">實驗室經費</span></div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-number">26</div>
+          <div class="kpi-label"><span class="en">Conference Proceedings</span><span class="zh">會議論文</span></div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-number">27</div>
+          <div class="kpi-label"><span class="en">Researchers Trained</span><span class="zh">培育研究人員</span></div>
+        </div>
+      </div>
+
+      <div class="kpi-details" style="margin:2rem 0;">
+        <div class="kpi-section" style="margin-bottom:1.5rem;">
+          <h3 style="color:#60a5fa;font-size:1.2rem;margin-bottom:0.75rem;"><span class="en">Education</span><span class="zh">學歷</span></h3>
+          <ul style="list-style:none;padding-left:0;">
+            <li style="margin-bottom:0.3rem;"><span class="en">Ph.D. in Rehabilitation Science, University of Pittsburgh</span><span class="zh">美國匹茲堡大學復健科學博士</span></li>
+            <li style="margin-bottom:0.3rem;"><span class="en">M.S. in Biomedical Engineering, National Taiwan University</span><span class="zh">國立台灣大學生物醫學工程碩士</span></li>
+            <li style="margin-bottom:0.3rem;"><span class="en">B.S. in Mechanical Engineering, National Cheng Kung University</span><span class="zh">國立成功大學機械工程學士</span></li>
+          </ul>
+        </div>
+
+        <div class="kpi-section" style="margin-bottom:1.5rem;">
+          <h3 style="color:#60a5fa;font-size:1.2rem;margin-bottom:0.75rem;"><span class="en">Appointments</span><span class="zh">工作經歷</span></h3>
+          <ul style="list-style:none;padding-left:0;">
+            <li style="margin-bottom:0.3rem;"><span class="en">Assistant Professor, National Defense Medical University</span><span class="zh">國防醫學大學助理教授</span></li>
+            <li style="margin-bottom:0.3rem;"><span class="en">Assistant Professor, UT Southwestern Medical Center</span><span class="zh">德州大學西南醫學中心助理教授</span></li>
+            <li style="margin-bottom:0.3rem;"><span class="en">Postdoctoral Research Fellow, Northwestern University</span><span class="zh">西北大學博士後研究員</span></li>
+            <li style="margin-bottom:0.3rem;"><span class="en">Postdoctoral Research Associate, University of Pittsburgh</span><span class="zh">匹茲堡大學博士後研究員</span></li>
+          </ul>
+        </div>
+
+        <div class="kpi-section" style="margin-bottom:1.5rem;">
+          <h3 style="color:#60a5fa;font-size:1.2rem;margin-bottom:0.75rem;"><span class="en">Research Interests</span><span class="zh">研究方向</span></h3>
+          <p style="opacity:0.7;font-size:0.95rem;"><span class="en">Quantitative Ultrasound Imaging &amp; Radiomics | AI/ML in Medical Image Analysis | Clinical Biomechanics &amp; Motion Analysis | Spinal Cord Injury &amp; Neuromuscular Disorders</span><span class="zh">定量超音波影像學與放射學資訊 | 醫學影像之 AI/ML | 臨床生物力學與運動分析 | 脊髓損傷與神經肌肉疾病</span></p>
+        </div>
+      </div>
+
+      <div class="team-header">
+        <h2 data-animate><span class="en">Lab Members</span><span class="zh">實驗室成員</span></h2>
+      </div>
+      <div class="team-grid">
+        <div class="team-member" data-animate>
+          <div class="team-avatar"><div class="team-avatar-placeholder" style="background:rgba(96,165,250,0.15);color:#2563eb;">XL</div></div>
+          <h4><span class="en">Xin-Lin Lai</span><span class="zh">賴昕霖</span></h4>
+          <p><span class="en">PhD Student, 2026–present</span><span class="zh">博士生，2026–至今</span></p>
+          <p style="font-size:0.85rem;"><span class="en">Graduate Institute of Medical Sciences, National Defense Medical University</span><span class="zh">國防醫學大學醫學科學研究所</span></p>
+        </div>
+        <div class="team-member" data-animate>
+          <div class="team-avatar"><div class="team-avatar-placeholder" style="background:rgba(168,85,247,0.15);color:#7c3aed;">MH</div></div>
+          <h4><span class="en">Min-Hung Liao</span><span class="zh">廖敏宏</span></h4>
+          <p><span class="en">PhD Student</span><span class="zh">博士生</span></p>
+          <p style="font-size:0.85rem;"><span class="en">Graduate Institute of Life Sciences, National Defense Medical University</span><span class="zh">國防醫學大學生命科學研究所</span></p>
+        </div>
+        <div class="team-member" data-animate>
+          <div class="team-avatar"><div class="team-avatar-placeholder" style="background:rgba(168,85,247,0.15);color:#7c3aed;">AY</div></div>
+          <h4>Alex Ye</h4>
+          <p><span class="en">Master's Student, 2026–present</span><span class="zh">碩士生，2026–至今</span></p>
+          <p style="font-size:0.85rem;"><span class="en">Global Health, National Taiwan University</span><span class="zh">全球衛生學程，國立台灣大學</span></p>
+        </div>
+        <div class="team-member" data-animate>
+          <div class="team-avatar"><div class="team-avatar-placeholder" style="background:rgba(96,165,250,0.15);color:#2563eb;">JC</div></div>
+          <h4>Chen Yun Ze Jeremy</h4>
+          <p><span class="en">Biomedical Engineering Student</span><span class="zh">生物醫學工程學生</span></p>
+          <p style="font-size:0.85rem;"><span class="en">National University of Singapore (NUS)</span><span class="zh">新加坡國立大學</span></p>
+        </div>
+        <div class="team-member" data-animate>
+          <div class="team-avatar"><div class="team-avatar-placeholder" style="background:rgba(96,165,250,0.15);color:#2563eb;">KS</div></div>
+          <h4>Koby Sample</h4>
+          <p><span class="en">Medical Student, 2025–present</span><span class="zh">醫學生，2025–至今</span></p>
+          <p style="font-size:0.85rem;"><span class="en">Class of 2028, UT Southwestern</span><span class="zh">2028 級，德州大學西南醫學中心</span></p>
+        </div>
+        <div class="team-member" data-animate>
+          <div class="team-avatar"><div class="team-avatar-placeholder" style="background:rgba(168,85,247,0.15);color:#7c3aed;">MS</div></div>
+          <h4>Mihir Somisetty</h4>
+          <p><span class="en">Undergraduate Student, 2025–present</span><span class="zh">大學部學生，2025–至今</span></p>
+          <p style="font-size:0.85rem;"><span class="en">Neuroscience, University of Texas at Dallas</span><span class="zh">神經科學，德州大學達拉斯分校</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alumni" id="alumni" style="padding:6rem 2rem;background:rgba(10,10,18,0.95);">
+    <div class="container">
+      <div class="team-header">
+        <span class="section-label" data-animate><span class="en">Alumni</span><span class="zh">歷屆成員</span></span>
+        <h2 data-animate><span class="en">Lab Alumni</span><span class="zh">實驗室校友</span></h2>
+      </div>
+      <div class="team-grid" style="grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:2rem;">
+        
+        <div class="team-member" style="opacity:1;transform:none;">
+          <div class="team-avatar"><div class="team-avatar-placeholder" style="background:rgba(96,165,250,0.2);color:#60a5fa;">AN</div></div>
+          <h4>Andrew Nasr</h4>
+          <p style="color:#93c5fd;"><span class="en">PhD Student, 2022–2026</span><span class="zh">博士生，2022–2026</span></p>
+          <p style="font-size:0.85rem;opacity:0.6;"><span class="en">Applied Clinical Research, UT Southwestern</span><span class="zh">應用臨床研究，德州大學西南醫學中心</span></p>
+        </div>
+
+        <div class="team-member" style="opacity:1;transform:none;">
+          <div class="team-avatar"><div class="team-avatar-placeholder" style="background:rgba(168,85,247,0.2);color:#a855f7;">CP</div></div>
+          <h4>Chris Pierson</h4>
+          <p style="color:#a855f7;"><span class="en">PhD Student, 2023–2026</span><span class="zh">博士生，2023–2026</span></p>
+          <p style="font-size:0.85rem;opacity:0.6;"><span class="en">Applied Clinical Research, UT Southwestern</span><span class="zh">應用臨床研究，德州大學西南醫學中心</span></p>
+        </div>
+
+        <div class="team-member" style="opacity:1;transform:none;">
+          <div class="team-avatar"><div class="team-avatar-placeholder" style="background:rgba(96,165,250,0.2);color:#60a5fa;">HK</div></div>
+          <h4>Hyungtaek Kim, PhD</h4>
+          <p style="color:#93c5fd;"><span class="en">PhD Student → Postdoctoral Fellow</span><span class="zh">博士生 → 博士後研究員</span></p>
+          <p style="font-size:0.85rem;opacity:0.6;"><span class="en">UT Dallas / Northwestern, 2016–2022</span><span class="zh">德州大學達拉斯分校 / 西北大學，2016–2022</span></p>
+        </div>
+
+        <div class="team-member" style="opacity:1;transform:none;">
+          <div class="team-avatar"><div class="team-avatar-placeholder" style="background:rgba(168,85,247,0.2);color:#a855f7;">JF</div></div>
+          <h4>Julia Fram, MD</h4>
+          <p style="color:#a855f7;"><span class="en">Medical Student, 2018–2019</span><span class="zh">醫學生，2018–2019</span></p>
+          <p style="font-size:0.85rem;opacity:0.6;"><span class="en">Northwestern University</span><span class="zh">西北大學</span></p>
+        </div>
+
+        <div class="team-member" style="opacity:1;transform:none;">
+          <div class="team-avatar"><div class="team-avatar-placeholder" style="background:rgba(96,165,250,0.2);color:#60a5fa;">KP</div></div>
+          <h4>Kevin Prabhu, MD</h4>
+          <p style="color:#93c5fd;"><span class="en">Medical Student, 2021–2023</span><span class="zh">醫學生，2021–2023</span></p>
+          <p style="font-size:0.85rem;opacity:0.6;"><span class="en">UT Southwestern Medical Center</span><span class="zh">德州大學西南醫學中心</span></p>
+        </div>
+
+        <div class="team-member" style="opacity:1;transform:none;">
+          <div class="team-avatar"><div class="team-avatar-placeholder" style="background:rgba(168,85,247,0.2);color:#a855f7;">CJ</div></div>
+          <h4>Christina Juan, MD</h4>
+          <p style="color:#a855f7;"><span class="en">Medical Student</span><span class="zh">醫學生</span></p>
+          <p style="font-size:0.8rem;opacity:0.6;"><span class="en">UT Southwestern Medical Center</span><span class="zh">德州大學西南醫學中心</span></p>
+        </div>
+
+        <div class="team-member" style="opacity:1;transform:none;">
+          <div class="team-avatar"><div class="team-avatar-placeholder" style="background:rgba(96,165,250,0.2);color:#60a5fa;">JH</div></div>
+          <h4>Joshua Harris, MD</h4>
+          <p style="color:#93c5fd;"><span class="en">Resident → Sports Medicine Fellow</span><span class="zh">住院醫師 → 運動醫學研究員</span></p>
+          <p style="font-size:0.85rem;opacity:0.6;"><span class="en">UT Southwestern Medical Center</span><span class="zh">德州大學西南醫學中心</span></p>
+        </div>
+
+        <div class="team-member" style="opacity:1;transform:none;">
+          <div class="team-avatar"><div class="team-avatar-placeholder" style="background:rgba(168,85,247,0.2);color:#a855f7;">JR</div></div>
+          <h4>James Richard, DPT</h4>
+          <p style="color:#a855f7;"><span class="en">Undergraduate Research Student</span><span class="zh">大學部研究學生</span></p>
+          <p style="font-size:0.85rem;opacity:0.6;"><span class="en">UT Southwestern SURF Program</span><span class="zh">UTSW SURF 計畫</span></p>
+        </div>
+
+        <div class="team-member" style="opacity:1;transform:none;">
+          <div class="team-avatar"><div class="team-avatar-placeholder" style="background:rgba(96,165,250,0.2);color:#60a5fa;">HW</div></div>
+          <h4>Henry Wang</h4>
+          <p style="color:#93c5fd;"><span class="en">Undergraduate Student, 2024–2025</span><span class="zh">大學部學生，2024–2025</span></p>
+          <p style="font-size:0.85rem;opacity:0.6;"><span class="en">Neuroscience, Brown University</span><span class="zh">神經科學，布朗大學</span></p>
+        </div>
+
+        <div class="team-member" style="opacity:1;transform:none;">
+          <div class="team-avatar"><div class="team-avatar-placeholder" style="background:rgba(168,85,247,0.2);color:#a855f7;">SB</div></div>
+          <h4>Bhavana Sreepad</h4>
+          <p style="color:#a855f7;"><span class="en">Medical Student, 2024–2025</span><span class="zh">醫學生，2024–2025</span></p>
+          <p style="font-size:0.85rem;opacity:0.6;"><span class="en">Texas Christian University</span><span class="zh">德州基督教大學</span></p>
+        </div>
+
+        <div class="team-member" style="opacity:1;transform:none;">
+          <div class="team-avatar"><div class="team-avatar-placeholder" style="background:rgba(96,165,250,0.2);color:#60a5fa;">TC</div></div>
+          <h4>Trina Chattopadhyay, PhD</h4>
+          <p style="color:#93c5fd;"><span class="en">PhD Candidate (exp. June 2026)</span><span class="zh">博士候選人（預計2026年6月畢業）</span></p>
+          <p style="font-size:0.85rem;opacity:0.6;"><span class="en">National Defense Medical University</span><span class="zh">國防醫學大學</span></p>
+        </div>
+
+        <div class="team-member" style="opacity:1;transform:none;">
+          <div class="team-avatar"><div class="team-avatar-placeholder" style="background:rgba(168,85,247,0.2);color:#a855f7;">TL</div></div>
+          <h4>Thai Le</h4>
+          <p style="color:#a855f7;"><span class="en">Visiting Undergraduate Intern, 2025</span><span class="zh">訪問大學部實習生，2025</span></p>
+          <p style="font-size:0.85rem;opacity:0.6;"><span class="en">Yale-funded summer program</span><span class="zh">耶魯大學資助暑期計畫</span></p>
+        </div>
+        <div class="team-member" style="opacity:1;transform:none;">
+          <div class="team-avatar"><div class="team-avatar-placeholder" style="background:rgba(96,165,250,0.2);color:#60a5fa;">SL</div></div>
+          <h4>Sathwik Lyer</h4>
+          <p style="color:#93c5fd;"><span class="en">Medical Student, 2024–2025</span><span class="zh">醫學生，2024–2025</span></p>
+          <p style="font-size:0.85rem;opacity:0.6;"><span class="en">Central Michigan University</span><span class="zh">中央密西根大學</span></p>
+        </div>
+        <div class="team-member" style="opacity:1;transform:none;">
+          <div class="team-avatar"><div class="team-avatar-placeholder" style="background:rgba(168,85,247,0.2);color:#a855f7;">BS</div></div>
+          <h4>Bilal Siddiq</h4>
+          <p style="color:#a855f7;"><span class="en">Medical Student, 2023–2024</span><span class="zh">醫學生，2023–2024</span></p>
+          <p style="font-size:0.85rem;opacity:0.6;"><span class="en">University of Tennessee</span><span class="zh">田納西大學</span></p>
+        </div>
+        <div class="team-member" style="opacity:1;transform:none;">
+          <div class="team-avatar"><div class="team-avatar-placeholder" style="background:rgba(96,165,250,0.2);color:#60a5fa;">HJ</div></div>
+          <h4>Hunter Jones</h4>
+          <p style="color:#93c5fd;"><span class="en">Resident, 2022</span><span class="zh">住院醫師，2022</span></p>
+          <p style="font-size:0.85rem;opacity:0.6;"><span class="en">Orthopaedic Surgery, UT Southwestern</span><span class="zh">骨科，德州大學西南醫學中心</span></p>
+        </div>
+        <div class="team-member" style="opacity:1;transform:none;">
+          <div class="team-avatar"><div class="team-avatar-placeholder" style="background:rgba(168,85,247,0.2);color:#a855f7;">TS</div></div>
+          <h4>Thakur Srushti</h4>
+          <p style="color:#a855f7;"><span class="en">Master's Student, 2021</span><span class="zh">碩士生，2021</span></p>
+          <p style="font-size:0.85rem;opacity:0.6;"><span class="en">Bioengineering, University of Texas at Dallas</span><span class="zh">生物工程，德州大學達拉斯分校</span></p>
+        </div>
+        <div class="team-member" style="opacity:1;transform:none;">
+          <div class="team-avatar"><div class="team-avatar-placeholder" style="background:rgba(96,165,250,0.2);color:#60a5fa;">HC</div></div>
+          <h4>Holt Cutler</h4>
+          <p style="color:#93c5fd;"><span class="en">Resident, 2021</span><span class="zh">住院醫師，2021</span></p>
+          <p style="font-size:0.85rem;opacity:0.6;"><span class="en">Orthopaedic Surgery, UT Southwestern</span><span class="zh">骨科，德州大學西南醫學中心</span></p>
+        </div>
+        <div class="team-member" style="opacity:1;transform:none;">
+          <div class="team-avatar"><div class="team-avatar-placeholder" style="background:rgba(168,85,247,0.2);color:#a855f7;">KW</div></div>
+          <h4>Kyle Wentz</h4>
+          <p style="color:#a855f7;"><span class="en">Chief Resident, 2020</span><span class="zh">總住院醫師，2020</span></p>
+          <p style="font-size:0.85rem;opacity:0.6;"><span class="en">Physical Medicine and Rehabilitation, UT Southwestern</span><span class="zh">復健醫學，德州大學西南醫學中心</span></p>
+        </div>
+        <div class="team-member" style="opacity:1;transform:none;">
+          <div class="team-avatar"><div class="team-avatar-placeholder" style="background:rgba(96,165,250,0.2);color:#60a5fa;">MD</div></div>
+          <h4>Michael Del Core</h4>
+          <p style="color:#93c5fd;"><span class="en">Chief Resident, 2019</span><span class="zh">總住院醫師，2019</span></p>
+          <p style="font-size:0.85rem;opacity:0.6;"><span class="en">Orthopaedic Surgery, UT Southwestern</span><span class="zh">骨科，德州大學西南醫學中心</span></p>
+        </div>
+        <div class="team-member" style="opacity:1;transform:none;">
+          <div class="team-avatar"><div class="team-avatar-placeholder" style="background:rgba(168,85,247,0.2);color:#a855f7;">JA</div></div>
+          <h4>Jason Arnold</h4>
+          <p style="color:#a855f7;"><span class="en">Medical Student, 2017–2018</span><span class="zh">醫學生，2017–2018</span></p>
+          <p style="font-size:0.85rem;opacity:0.6;"><span class="en">Northwestern University</span><span class="zh">西北大學</span></p>
+        </div>
+        <div class="team-member" style="opacity:1;transform:none;">
+          <div class="team-avatar"><div class="team-avatar-placeholder" style="background:rgba(96,165,250,0.2);color:#60a5fa;">CL</div></div>
+          <h4>Christina Lee</h4>
+          <p style="color:#93c5fd;"><span class="en">Undergraduate Student, 2016–2018</span><span class="zh">大學部學生，2016–2018</span></p>
+          <p style="font-size:0.85rem;opacity:0.6;"><span class="en">Biomedical Engineering, Northwestern University</span><span class="zh">生物醫學工程，西北大學</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="teaching" id="teaching" style="padding:6rem 2rem;background:rgba(15,15,30,0.95);">
+    <div class="container">
+      <div class="team-header">
+        <span class="section-label" data-animate><span class="en">Teaching</span><span class="zh">教學</span></span>
+        <h2 data-animate><span class="en">Courses &amp; Instruction</span><span class="zh">課程與教學</span></h2>
+      </div>
+      <div style="max-width:900px;margin:0 auto;">
+        
+        <div style="margin-bottom:3rem;">
+          <h3 style="color:#60a5fa;font-size:1.3rem;margin-bottom:1.5rem;"><span class="en">National Defense Medical University</span><span class="zh">國防醫學大學</span></h3>
+          <div style="background:rgba(255,255,255,0.03);border-radius:12px;padding:1.5rem;border:1px solid rgba(255,255,255,0.06);">
+            <p style="margin-bottom:0.5rem;"><span class="en" style="color:#93c5fd;font-weight:600;">Programming and Data Analysis for Digital Health</span><span class="zh" style="color:#93c5fd;font-weight:600;">數位健康程式設計與資料分析</span></p>
+            <p style="font-size:0.9rem;opacity:0.7;margin-bottom:0;">
+              <span class="en">Primary Instructor (Spring 2027, scheduled) | 3 credits | MS/PhD elective | Graduate Institute of Medical Sciences</span>
+              <span class="zh">主責教師（2027 年春，預定開課）｜3 學分｜碩、博士班選修｜醫學科學研究所</span>
+            </p>
+          </div>
+          <div style="background:rgba(255,255,255,0.03);border-radius:12px;padding:1.5rem;border:1px solid rgba(255,255,255,0.06);margin-top:1rem;">
+            <p style="margin-bottom:0.5rem;"><span class="en" style="color:#93c5fd;font-weight:600;">Artificial Intelligence for Medical Imaging Radiomics: Analyses and Applications (3010040)</span><span class="zh" style="color:#93c5fd;font-weight:600;">人工智慧醫學影像組學：分析與應用（3010040）</span></p>
+            <p style="font-size:0.9rem;opacity:0.7;margin-bottom:0.35rem;">
+              <span class="en">Primary Instructor and Course Designer (Fall 2026) | 3 credits | Graduate Institute of Medical Sciences</span>
+              <span class="zh">主責教師兼課程設計（2026 秋）｜3 學分｜醫學科學研究所</span>
+            </p>
+            <p style="font-size:0.9rem;opacity:0.7;margin-bottom:0;">
+              <span class="en">ACUE-structured 18-week doctoral course. 16 enrolled doctoral students, plus 17 faculty and clinician auditors from nine clinical departments.</span>
+              <span class="zh">依 ACUE 有效教學架構設計的 18 週博士班課程。博士班修課 16 人，另有來自 9 個臨床科部的教師與臨床人員旁聽 17 人。</span>
+            </p>
+          </div>
+          <div style="background:rgba(255,255,255,0.03);border-radius:12px;padding:1.5rem;border:1px solid rgba(255,255,255,0.06);margin-top:1rem;">
+            <p style="margin-bottom:0.5rem;"><span class="en" style="color:#a855f7;font-weight:600;">Introduction to New Developments in Medical Technology</span><span class="zh" style="color:#a855f7;font-weight:600;">醫學科技新進展概論</span></p>
+            <p style="font-size:0.9rem;opacity:0.7;margin-bottom:0;">
+              <span class="en">Guest Lecture (2026) | School of Medicine</span>
+              <span class="zh">專題演講（2026）｜醫學院</span>
+            </p>
+          </div>
+        </div>
+
+        <div style="margin-bottom:3rem;">
+          <h3 style="color:#60a5fa;font-size:1.3rem;margin-bottom:1.5rem;"><span class="en">National Taiwan University</span><span class="zh">國立臺灣大學</span></h3>
+          <div style="background:rgba(255,255,255,0.03);border-radius:12px;padding:1.5rem;border:1px solid rgba(255,255,255,0.06);">
+            <p style="margin-bottom:0.5rem;"><span class="en" style="color:#a855f7;font-weight:600;">Introduction to Nutrition and Food (BST1006)</span><span class="zh" style="color:#a855f7;font-weight:600;">營養與食品概論（BST1006）</span></p>
+            <p style="font-size:0.9rem;opacity:0.7;margin-bottom:0;">
+              <span class="en">Guest Lecture (Fall 2026) | 2 credits | Department of Biochemical Science and Technology</span>
+              <span class="zh">專題演講（2026 秋）｜2 學分｜生化科技學系</span>
+            </p>
+          </div>
+        </div>
+
+        <div style="margin-bottom:3rem;">
+          <h3 style="color:#60a5fa;font-size:1.3rem;margin-bottom:1.5rem;"><span class="en">UT Southwestern Medical Center</span><span class="zh">德州大學西南醫學中心</span></h3>
+          <div style="background:rgba(255,255,255,0.03);border-radius:12px;padding:1.5rem;border:1px solid rgba(255,255,255,0.06);">
+            <p style="margin-bottom:0.5rem;"><span class="en" style="color:#93c5fd;font-weight:600;">Scientific Communication II (ACR5115)</span><span class="zh" style="color:#93c5fd;font-weight:600;">科學溝通 II（ACR5115）</span></p>
+            <p style="font-size:0.9rem;opacity:0.7;margin-bottom:0.35rem;">
+              <span class="en">Instructor (2023–Present) | Fall, 3 credits | Department of Applied Clinical Research</span>
+              <span class="zh">授課（2023–現在）｜秋季，3 學分｜應用臨床研究科</span>
+            </p>
+            <p style="font-size:0.9rem;opacity:0.7;margin-bottom:0;">
+              <span class="en">Mean student rating 4.80/5.00 (n = 5).</span>
+              <span class="zh">學生評量平均 4.80/5.00（n = 5）。</span>
+            </p>
+          </div>
+          <div style="background:rgba(255,255,255,0.03);border-radius:12px;padding:1.5rem;border:1px solid rgba(255,255,255,0.06);margin-top:1rem;">
+            <p style="margin-bottom:0.5rem;"><span class="en" style="color:#a855f7;font-weight:600;">Leveraging Biomedical Imaging Technology in Prosthetics and Orthotics</span><span class="zh" style="color:#a855f7;font-weight:600;">義肢與矯具的生物醫學影像技術</span></p>
+            <p style="font-size:0.9rem;opacity:0.7;margin-bottom:0.35rem;">
+              <span class="en">Guest Lecture (2022) on Biomechanics of Human Movement II (MPO 5106) | Fall, 3 credits | Department of Prosthetics and Orthotics</span>
+              <span class="zh">來賓演講（2022），人體運動生物力學 II（MPO 5106）｜秋季，3 學分｜義肢矯具學系</span>
+            </p>
+            <p style="font-size:0.9rem;opacity:0.7;margin-bottom:0;">
+              <span class="en">Mean student rating 4.75/5.00 (n = 11).</span>
+              <span class="zh">學生評量平均 4.75/5.00（n = 11）。</span>
+            </p>
+          </div>
+        </div>
+
+        <div style="margin-bottom:3rem;">
+          <h3 style="color:#60a5fa;font-size:1.3rem;margin-bottom:1.5rem;"><span class="en">University of Illinois at Chicago</span><span class="zh">伊利諾大學芝加哥分校</span></h3>
+          <div style="background:rgba(255,255,255,0.03);border-radius:12px;padding:1.5rem;border:1px solid rgba(255,255,255,0.06);">
+            <p style="margin-bottom:0.5rem;"><span class="en" style="color:#93c5fd;font-weight:600;">Instrumentation for Motor Control Research (PT/KN 574)</span><span class="zh" style="color:#93c5fd;font-weight:600;">運動控制研究儀器（PT/KN 574）</span></p>
+            <p style="font-size:0.9rem;opacity:0.7;margin-bottom:0.35rem;">
+              <span class="en">Instructor (2015) | Fall, 3 credits | Department of Physical Therapy</span>
+              <span class="zh">講師（2015）｜秋季，3 學分｜物理治療學系</span>
+            </p>
+            <p style="font-size:0.9rem;opacity:0.7;margin-bottom:0;">
+              <span class="en">Mean student rating 4.73/5.00 (n = 22).</span>
+              <span class="zh">學生評量平均 4.73/5.00（n = 22）。</span>
+            </p>
+          </div>
+        </div>
+
+        <div style="margin-bottom:3rem;">
+          <h3 style="color:#60a5fa;font-size:1.3rem;margin-bottom:1.5rem;"><span class="en">University of Pittsburgh</span><span class="zh">匹茲堡大學</span></h3>
+          <div style="background:rgba(255,255,255,0.03);border-radius:12px;padding:1.5rem;border:1px solid rgba(255,255,255,0.06);">
+            <p style="margin-bottom:0.5rem;"><span class="en" style="color:#93c5fd;font-weight:600;">Wheelchair Biomechanics (HRS 3705)</span><span class="zh" style="color:#93c5fd;font-weight:600;">輪椅生物力學（HRS 3705）</span></p>
+            <p style="font-size:0.9rem;opacity:0.7;margin-bottom:0;">
+              <span class="en">Instructor (2012–2013) | Fall, 2 credits | Department of Rehabilitation Science and Technology</span>
+              <span class="zh">講師（2012–2013）｜秋季，2 學分｜復健科學與技術系</span>
+            </p>
+          </div>
+          <div style="background:rgba(255,255,255,0.03);border-radius:12px;padding:1.5rem;border:1px solid rgba(255,255,255,0.06);margin-top:1rem;">
+            <p style="margin-bottom:0.5rem;"><span class="en" style="color:#93c5fd;font-weight:600;">Introduction to Research Methodology (HRS 2901)</span><span class="zh" style="color:#93c5fd;font-weight:600;">研究方法概論（HRS 2901）</span></p>
+            <p style="font-size:0.9rem;opacity:0.7;margin-bottom:0;">
+              <span class="en">Instructor (2009) | Fall, 3 credits | Department of Rehabilitation Science and Technology</span>
+              <span class="zh">講師（2009）｜秋季，3 學分｜復健科學與技術系</span>
+            </p>
+          </div>
+          <div style="background:rgba(255,255,255,0.03);border-radius:12px;padding:1.5rem;border:1px solid rgba(255,255,255,0.06);margin-top:1rem;">
+            <p style="margin-bottom:0.5rem;"><span class="en" style="color:#a855f7;font-weight:600;">Doctoral Seminar (HRS 3000)</span><span class="zh" style="color:#a855f7;font-weight:600;">博士研討會（HRS 3000）</span></p>
+            <p style="font-size:0.9rem;opacity:0.7;margin-bottom:0;">
+              <span class="en">Instructor (2009) | Fall, 1 credit | Department of Rehabilitation Science and Technology</span>
+              <span class="zh">講師（2009）｜秋季，1 學分｜復健科學與技術系</span>
+            </p>
+          </div>
+        </div>
+
+        <div style="margin-bottom:2rem;">
+          <h3 style="color:#60a5fa;font-size:1.3rem;margin-bottom:1.5rem;"><span class="en">Other Teaching Activities</span><span class="zh">其他教學活動</span></h3>
+          <div style="background:rgba(255,255,255,0.03);border-radius:12px;padding:1.5rem;border:1px solid rgba(255,255,255,0.06);">
+            <p style="margin-bottom:0.5rem;"><span class="en" style="color:#93c5fd;font-weight:600;">Biodesign Innovation Class — Judge and Panel Reviewer</span><span class="zh" style="color:#93c5fd;font-weight:600;">生醫設計創新課程 — 評審</span></p>
+            <p style="font-size:0.9rem;opacity:0.7;margin-bottom:0;">
+              <span class="en">Final presentation, 2024–2025 class. Taipei Medical University Biodesign Center (June 4, 2025).</span>
+              <span class="zh">2024–2025 課程期末發表。臺北醫學大學生醫設計中心（2025 年 6 月 4 日）。</span>
+            </p>
+          </div>
+          <div style="background:rgba(255,255,255,0.03);border-radius:12px;padding:1.5rem;border:1px solid rgba(255,255,255,0.06);margin-top:1rem;">
+            <p style="margin-bottom:0.5rem;"><span class="en" style="color:#a855f7;font-weight:600;">Start-up Entrepreneurship and Investment Opportunities in North Texas</span><span class="zh" style="color:#a855f7;font-weight:600;">北德州創業與投資機會：達拉斯—沃斯堡都會區</span></p>
+            <p style="font-size:0.9rem;opacity:0.7;margin-bottom:0;">
+              <span class="en">Invited seminar, Biodesign Innovation Center (June 11, 2025).</span>
+              <span class="zh">受邀專題演講，生醫設計創新中心（2025 年 6 月 11 日）。</span>
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-links">
+      <a href="index.html#about"><span class="en">About</span><span class="zh">關於</span></a>
+      <a href="index.html#research"><span class="en">Research</span><span class="zh">研究</span></a>
+      <a href="index.html#publications"><span class="en">Publications</span><span class="zh">論文</span></a>
+      <a href="team.html"><span class="en">Team</span><span class="zh">團隊</span></a>
+      <a href="team.html#alumni"><span class="en">Alumni</span><span class="zh">校友</span></a>
+      <a href="team.html#teaching"><span class="en">Courses & Instruction</span><span class="zh">課程與教學</span></a>
+      <a href="index.html#donate"><span class="en">Donate</span><span class="zh">捐款</span></a>
+      <a href="index.html#contact"><span class="en">Contact</span><span class="zh">聯絡</span></a>
+    </div>
+    <p><span class="en">&copy; 2026 TriMED Lab, National Defense Medical University. All rights reserved.</span><span class="zh">&copy; 2026 診療一體研究與智慧醫療實驗室，國防醫學大學。版權所有。</span></p>
+  </footer>
+
+  <!-- KPI Modal -->
+  <div class="kpi-modal" id="kpiModal">
+    <div class="kpi-modal-content">
+      <button class="kpi-close" onclick="closeKPI()">&times;</button>
+      <div class="kpi-header">
+        <div class="kpi-avatar"><img src="images/pi_avatar.svg" alt="Dr. Yen-Sheng Lin" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></div>
+        <div class="kpi-title">
+          <h2><span class="en">Yen-Sheng (Johnny) Lin, PhD, PMP</span><span class="zh">林彥聖 博士</span></h2>
+          <p class="kpi-subtitle"><span class="en">Assistant Professor, Graduate Institute of Medical Sciences</span><span class="zh">醫學科學研究所助理教授</span></p>
+        </div>
+      </div>
+      
+      <p class="kpi-scope"><span class="en">Laboratory totals</span><span class="zh">實驗室合計</span></p>
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-number">20</div>
+          <div class="kpi-label"><span class="en">Peer-Reviewed Articles</span><span class="zh">同儕審查期刊論文</span></div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-number">7</div>
+          <div class="kpi-label"><span class="en">Trainee-Led Articles</span><span class="zh">學員第一作者論文</span></div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-number kpi-funding"><span>$452.5K</span><span>NT$8.76M</span></div>
+          <div class="kpi-label"><span class="en">Laboratory Funding</span><span class="zh">實驗室經費</span></div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-number">26</div>
+          <div class="kpi-label"><span class="en">Conference Proceedings</span><span class="zh">會議論文</span></div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-number">27</div>
+          <div class="kpi-label"><span class="en">Researchers Trained</span><span class="zh">培育研究人員</span></div>
+        </div>
+      </div>
+
+      <div class="kpi-details">
+        <div class="kpi-section">
+          <h3><span class="en">Education</span><span class="zh">學歷</span></h3>
+          <ul>
+            <li><span class="en">Ph.D. in Rehabilitation Science, University of Pittsburgh</span><span class="zh">美國匹茲堡大學復健科學博士</span></li>
+            <li><span class="en">M.S. in Biomedical Engineering, National Taiwan University</span><span class="zh">國立台灣大學生物醫學工程碩士</span></li>
+            <li><span class="en">B.S. in Mechanical Engineering, National Cheng Kung University</span><span class="zh">國立成功大學機械工程學士</span></li>
+          </ul>
+        </div>
+        
+        <div class="kpi-section">
+          <h3><span class="en">Academic Appointments</span><span class="zh">學術經歷</span></h3>
+          <ul>
+            <li><span class="en">Assistant Professor, NDMU</span><span class="zh">國防醫學大學助理教授</span></li>
+            <li><span class="en">Assistant Professor, UT Southwestern</span><span class="zh">美國德州大學西南醫學中心助理教授</span></li>
+            <li><span class="en">Postdoctoral Fellow, Northwestern University</span><span class="zh">美國西北大學博士後研究員</span></li>
+            <li><span class="en">Postdoctoral Associate, University of Pittsburgh</span><span class="zh">美國匹茲堡大學博士後研究</span></li>
+          </ul>
+        </div>
+
+        <div class="kpi-section">
+          <h3><span class="en">Selected Grants</span><span class="zh">計畫補助</span></h3>
+          <ul>
+            <li><span class="en">PI — Shoulder Muscle Quality for Reverse Shoulder Arthroplasty, Trauma Research ($100K, 2025–2027)</span><span class="zh">PI — 肩部肌肉品質用於反向肩關節置換術 ($100K, 2025–2027)</span></li>
+            <li><span class="en">PI — SWE Radiomics for SCI-Induced Heterotopic Ossification, PVA ($200K, 2024–2027)</span><span class="zh">PI — 剪力波彈性成像影像組學偵測脊髓損傷異位骨化 ($200K, 2024–2027)</span></li>
+            <li><span class="en">Co-PI — Sarcopenia & Lumbar Spine Fusion, UT System ($100K, 2025–2027)</span><span class="zh">Co-PI — 肌少症與腰椎融合術 ($100K, 2025–2027)</span></li>
+            <li><span class="en">PI — tDCS for Cerebral Palsy, NIH TL1 Award ($100K, 2016–2018)</span><span class="zh">PI — 經顱直流電刺激治療腦性麻痺 ($100K, 2016–2018)</span></li>
+            <li><span class="en">PI — Freehand Ultrasound for Scapular Kinematics, Craig H. Neilsen Foundation ($150K, 2014–2016)</span><span class="zh">PI — 徒手超音波評估肩胛骨運動學 ($150K, 2014–2016)</span></li>
+          </ul>
+        </div>
+
+        <div class="kpi-section">
+          <h3><span class="en">Awards & Certifications</span><span class="zh">獲獎與認證</span></h3>
+          <ul>
+            <li><span class="en">Regenerative Medicine Podium Honorable Mention, Mackay Medical College (2026)</span><span class="zh">再生醫學論文傑出獎，馬偕醫學院 (2026)</span></li>
+            <li><span class="en">International Young Visiting Scholar, University Academic Alliance in Taiwan (2025)</span><span class="zh">國際青年訪問學者，大學學術聯盟 (2025)</span></li>
+            <li><span class="en">PMP Certified (#3923341), Project Management Institute (2024)</span><span class="zh">專案管理師認證 (#3923341) (2024)</span></li>
+            <li><span class="en">NVIDIA Deep Learning Institute Certification (2026)</span><span class="zh">NVIDIA 深度學習學院認證 (2026)</span></li>
+            <li><span class="en">ACUE Certificate in Effective Teaching Practice (2026)</span><span class="zh">有效教學實踐認證 (2026)</span></li>
+          </ul>
+        </div>
+
+        <div class="kpi-section">
+          <h3><span class="en">Research Interests</span><span class="zh">研究興趣</span></h3>
+          <ul>
+            <li><span class="en">Quantitative Ultrasound Imaging & Radiomics</span><span class="zh">定量超音波影像與影像組學</span></li>
+            <li><span class="en">AI/ML in Medical Image Analysis</span><span class="zh">人工智慧於醫學影像分析</span></li>
+            <li><span class="en">Clinical Biomechanics & Motion Analysis</span><span class="zh">臨床生物力學與動作分析</span></li>
+            <li><span class="en">Spinal Cord Injury & Secondary Complications</span><span class="zh">脊髓損傷與次併發症</span></li>
+          </ul>
+        </div>
+
+        <div class="kpi-section">
+          <h3><span class="en">Teaching</span><span class="zh">教學</span></h3>
+          <ul>
+            <li><span class="en">Programming and Data Analysis for Digital Health, NDMU (Spring 2027, scheduled)</span><span class="zh">數位健康程式設計與資料分析，國防醫學大學（2027 春，預定）</span></li>
+            <li><span class="en">AI for Medical Imaging Radiomics (3010040), NDMU (Fall 2026)</span><span class="zh">人工智慧醫學影像組學（3010040），國防醫學大學（2026 秋）</span></li>
+            <li><span class="en">Scientific Communication II (ACR5115), UTSW (2023–Present)</span><span class="zh">科學溝通 II（ACR5115），UTSW（2023–現在）</span></li>
+            <li><span class="en">Instrumentation for Motor Control Research (PT/KN 574), UIC (2015)</span><span class="zh">運動控制研究儀器（PT/KN 574），UIC（2015）</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="kpi-contact">
+        <a href="mailto:yslin@mail.ndmutsgh.edu.tw">yslin@mail.ndmutsgh.edu.tw</a>
+        <span>(02) 8792-3100 ext. 18635</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function setLang(lang) {
+      if (lang === 'zh') {
+        document.body.classList.add('lang-zh');
+        document.getElementById('btn-zh').classList.add('active');
+        document.getElementById('btn-en').classList.remove('active');
+        var mobileZh = document.getElementById('btn-zh-mobile');
+        var mobileEn = document.getElementById('btn-en-mobile');
+        if (mobileZh) mobileZh.classList.add('active');
+        if (mobileEn) mobileEn.classList.remove('active');
+      } else {
+        document.body.classList.remove('lang-zh');
+        document.getElementById('btn-en').classList.add('active');
+        document.getElementById('btn-zh').classList.remove('active');
+        var mobileZh = document.getElementById('btn-zh-mobile');
+        var mobileEn = document.getElementById('btn-en-mobile');
+        if (mobileEn) mobileEn.classList.add('active');
+        if (mobileZh) mobileZh.classList.remove('active');
+      }
+    }
+
+    var hamburgerBtn = document.getElementById('hamburger-btn');
+    var mobileOverlay = document.getElementById('mobile-overlay');
+    var mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+    function closeMobileMenu() {
+      hamburgerBtn.classList.remove('active');
+      mobileOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function toggleMobileMenu() {
+      hamburgerBtn.classList.toggle('active');
+      mobileOverlay.classList.toggle('active');
+      document.body.style.overflow = mobileOverlay.classList.contains('active') ? 'hidden' : '';
+    }
+
+    hamburgerBtn.addEventListener('click', toggleMobileMenu);
+    hamburgerBtn.addEventListener('touchstart', function(e) { e.preventDefault(); toggleMobileMenu(); }, { passive: false });
+
+    mobileNavLinks.forEach(function(link) {
+      link.addEventListener('click', closeMobileMenu);
+      link.addEventListener('touchstart', function(e) { e.preventDefault(); closeMobileMenu(); window.location.href = this.href; }, { passive: false });
+    });
+
+    var observerOptions = { threshold: 0.15, rootMargin: '0px 0px -80px 0px' };
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) { entry.target.classList.add('visible'); }
+      });
+    }, observerOptions);
+    document.querySelectorAll('[data-animate]').forEach(function(el) { observer.observe(el); });
+
+    // KPI Modal
+    function openKPI() {
+      document.getElementById('kpiModal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeKPI() {
+      document.getElementById('kpiModal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('kpiModal').addEventListener('click', function(e) {
+      if (e.target === this) closeKPI();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeKPI();
+    });
+  </script>
+</body>
+</html>

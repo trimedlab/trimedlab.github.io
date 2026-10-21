@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>TriMED Lab | National Defense Medical University</title>
+  <meta name="theme-color" content="#0f172a">
+  <meta property="og:title" content="TriMED Lab | National Defense Medical University">
+  <meta property="og:description" content="Theranostic Research and Intelligent Medicine (TriMED) Laboratory — National Defense Medical University">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://linlab.example.com">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="TriMED Lab | National Defense Medical University">
+  <meta name="twitter:description" content="Theranostic Research and Intelligent Medicine (TriMED) Laboratory">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --primary: #0a0a0a;
+      --accent: #3b82f6;
+      --text: #1a1a1a;
+      --text-light: #6b7280;
+      --bg: #ffffff;
+      --bg-alt: #f9fafb;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+
+    body {
+      font-family: 'Inter', 'Noto Sans TC', sans-serif;
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    * { -webkit-tap-highlight-color: transparent; }
+
+    /* iOS Safari fixes */
+    @supports (-webkit-touch-callout: none) {
+      .hero { min-height: -webkit-fill-available; }
+      .about { min-height: -webkit-fill-available; }
+      .about-image-wrapper { height: -webkit-fill-available; }
+    }
+
+    /* Minimum touch target size (44x44px) for iOS */
+    a, button, .lang-toggle button, .hamburger, .nav-links a,
+    .mobile-overlay-nav a, .submit-btn, .donate-btn,
+    .team-avatar, .research-card, .gallery-item,
+    .pub-item, .news-item, .join-card, .kpi-close {
+      min-height: 44px;
+      min-width: 44px;
+    }
+
+    /* Prevent horizontal scroll on mobile */
+    .horizontal-track {
+      animation: none;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .horizontal-track::-webkit-scrollbar { display: none; }
+    .stat-card { scroll-snap-align: start; flex-shrink: 0; }
+
+    img { max-width: 100%; height: auto; }
+
+    a, button, input, textarea, select { touch-action: manipulation; }
+
+    .lang-zh .en { display: none; }
+    .lang-zh .zh { display: inline; }
+    .lang-zh .en-block { display: none; }
+    .lang-zh .zh-block { display: block; }
+    .lang-zh .en-flex { display: none; }
+    .lang-zh .zh-flex { display: flex; }
+    .en { display: inline; }
+    .zh { display: none; }
+    .en-block { display: block; }
+    .zh-block { display: none; }
+    .en-flex { display: none; }
+    .zh-flex { display: none; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; width: 100%; z-index: 1000;
+      padding: 1.5rem 3rem; display: flex; justify-content: space-between;
+      align-items: center; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    nav.scrolled {
+      background: rgba(255,255,255,0.98); -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(20px); padding: 1rem 3rem; box-shadow: 0 1px 0 rgba(0,0,0,0.05);
+    }
+    .nav-logo {
+      display: inline-flex; align-items: center; flex: 0 0 auto; line-height: 0;
+      text-decoration: none;
+    }
+    .nav-logo img {
+      height: 46px; width: 42px; max-width: 42px; max-height: 46px;
+      object-fit: contain; object-position: center;
+      background: transparent; display: block;
+      filter: drop-shadow(0 0 1px rgba(255,255,255,0.85));
+    }
+    nav.scrolled .nav-logo img { filter: none; }
+    nav.scrolled .nav-logo { color: var(--primary); }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none; color: rgba(255,255,255,0.8); font-size: 0.85rem;
+      font-weight: 500; letter-spacing: 0.05em; transition: all 0.5s; position: relative;
+    }
+    nav.scrolled .nav-links a { color: var(--text-light); }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px;
+      background: currentColor; transition: width 0.3s;
+    }
+    .nav-links a:hover::after { width: 100%; }
+    .lang-toggle {
+      display: flex; gap: 0; background: rgba(255,255,255,0.15); border-radius: 6px;
+      overflow: hidden; cursor: pointer; border: none; font-size: 0.8rem; font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+    nav.scrolled .lang-toggle { background: rgba(0,0,0,0.06); }
+    .lang-toggle button {
+      background: transparent; color: rgba(255,255,255,0.6); border: none;
+      padding: 0.4rem 0.75rem; cursor: pointer; font-size: 0.8rem; font-weight: 600;
+      font-family: inherit; letter-spacing: 0.05em; transition: all 0.3s;
+      -webkit-appearance: none; -moz-appearance: none; appearance: none;
+    }
+    nav.scrolled .lang-toggle button { color: var(--text-light); }
+    .lang-toggle button.active { background: var(--accent); color: white; }
+    nav.scrolled .lang-toggle button.active { color: white; }
+    .lang-toggle button:hover:not(.active) { color: rgba(255,255,255,0.9); }
+    nav.scrolled .lang-toggle button:hover:not(.active) { color: var(--text); }
+
+    .hamburger {
+      display: none; flex-direction: column; justify-content: center; align-items: center;
+      width: 44px; height: 44px; background: none; border: none; cursor: pointer;
+      padding: 0; z-index: 1002; position: relative;
+    }
+    .hamburger-line {
+      display: block; width: 24px; height: 2px; background: white; border-radius: 2px;
+      transition: all 0.3s ease; position: absolute;
+    }
+    nav.scrolled .hamburger-line { background: var(--primary); }
+    .hamburger-line:nth-child(1) { transform: translateY(-7px); }
+    .hamburger-line:nth-child(2) { transform: translateY(0); }
+    .hamburger-line:nth-child(3) { transform: translateY(7px); }
+    .hamburger.active .hamburger-line:nth-child(1) { transform: rotate(45deg) translate(0, 0); }
+    .hamburger.active .hamburger-line:nth-child(2) { opacity: 0; }
+    .hamburger.active .hamburger-line:nth-child(3) { transform: rotate(-45deg) translate(0, 0); }
+
+    .mobile-overlay {
+      display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.97);
+      -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px); z-index: 1001;
+      flex-direction: column; justify-content: center; align-items: center;
+      opacity: 0; transition: opacity 0.4s ease;
+    }
+    .mobile-overlay.active { display: flex; opacity: 1; }
+    .mobile-overlay-nav { list-style: none; text-align: center; display: flex; flex-direction: column; gap: 2rem; }
+    .mobile-overlay-nav a {
+      text-decoration: none; color: white; font-size: 1.75rem; font-weight: 600;
+      letter-spacing: 0.05em; transition: color 0.3s; min-height: 44px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .mobile-overlay-nav a:hover { color: var(--accent); }
+    .mobile-overlay .lang-toggle { margin-top: 3rem; background: rgba(255,255,255,0.1); border-radius: 8px; }
+    .mobile-overlay .lang-toggle button { font-size: 1rem; padding: 0.6rem 1.5rem; color: rgba(255,255,255,0.6); }
+    .mobile-overlay .lang-toggle button.active { background: var(--accent); color: white; }
+
+    .hero {
+      position: relative; min-height: 100svh; min-height: 100dvh;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      text-align: center; background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+      overflow: hidden; padding-top: env(safe-area-inset-top); padding-bottom: calc(5.5rem + env(safe-area-inset-bottom));
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at 20% 80%, rgba(59,130,246,0.2) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(139,92,246,0.2) 0%, transparent 50%);
+      animation: heroGlow 8s ease-in-out infinite alternate; will-change: transform;
+    }
+    @keyframes heroGlow { 0% { opacity: 0.5; } 100% { opacity: 1; } }
+    .hero-content { position: relative; z-index: 1; will-change: transform, opacity; transform: translateZ(0); }
+    .hero-subtitle {
+      font-size: 0.9rem; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase;
+      color: rgba(255,255,255,0.6); margin-bottom: 1.5rem; opacity: 0;
+      transform: translateY(20px); animation: fadeUp 1s 0.3s forwards;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif; font-size: clamp(4rem, 12vw, 10rem);
+      font-weight: 900; color: white; letter-spacing: 0.05em; line-height: 0.9;
+      margin-bottom: 2rem; opacity: 0; transform: translateY(40px); animation: fadeUp 1s 0.5s forwards;
+    }
+    .hero-logo {
+      width: min(240px, 62vw); height: auto; display: block; margin: 0 auto 1rem;
+      background: #fff; border-radius: 18px; padding: 0.7rem 0.9rem 0.45rem;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.35);
+      opacity: 0; transform: translateY(20px); animation: fadeUp 1s 0.4s forwards;
+    }
+    .hero h1 { font-size: clamp(2.4rem, 6vw, 4.75rem); margin-bottom: 0.75rem; }
+    .hero-tagline {
+      font-size: 1.25rem; font-weight: 300; color: rgba(255,255,255,0.7); max-width: 500px;
+      margin: 0 auto; opacity: 0; transform: translateY(20px); animation: fadeUp 1s 0.7s forwards;
+    }
+    .contact-logo {
+      width: min(240px, 100%); height: auto; display: block; margin-bottom: 1.5rem;
+      background: #fff; border-radius: 14px; padding: 0.55rem 0.7rem 0.35rem;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.35);
+    }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    .scroll-indicator {
+      position: absolute; bottom: 3rem; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 0.75rem;
+      color: rgba(255,255,255,0.5); font-size: 0.7rem; letter-spacing: 0.25em;
+      text-transform: uppercase; opacity: 0; animation: fadeUp 1s 1s forwards;
+    }
+    .scroll-line {
+      width: 1px; height: 80px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.6), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.3; transform: scaleY(0.6); transform-origin: top; }
+      50% { opacity: 1; transform: scaleY(1); }
+    }
+
+    section { padding: 10rem 3rem; position: relative; }
+    .container { max-width: 1400px; margin: 0 auto; }
+
+    .about {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 0; padding: 0; min-height: 100svh; min-height: 100dvh;
+    }
+    .about-image-wrapper {
+      background: #0a0a12; overflow: hidden; position: sticky; top: 0; height: 100svh; height: 100dvh;
+      display: flex; align-items: flex-end; justify-content: flex-start;
+    }
+    .about-image-wrapper::after {
+      content: ''; position: absolute; inset: 0;
+      background: none;
+    }
+    .about-content { padding: 8rem 5rem; display: flex; flex-direction: column; justify-content: center; }
+    .section-label {
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 2rem; opacity: 0; transform: translateX(-20px);
+      transition: all 0.8s;
+    }
+    .section-label.visible { opacity: 1; transform: translateX(0); }
+    .about-content h2 {
+      font-family: 'Playfair Display', 'Noto Sans TC', serif; font-size: 3.5rem; font-weight: 700;
+      line-height: 1.1; margin-bottom: 2rem; color: var(--primary); opacity: 0;
+      transform: translateY(40px); transition: all 1s 0.2s;
+    }
+    .about-content h2.visible { opacity: 1; transform: translateY(0); }
+    .about-content p {
+      font-size: 1.15rem; color: var(--text-light); margin-bottom: 1.5rem; line-height: 1.9;
+      opacity: 0; transform: translateY(30px); transition: all 0.8s;
+    }
+    .about-content p.visible { opacity: 1; transform: translateY(0); }
+
+    .research { background: var(--bg-alt); padding: 10rem 3rem; }
+    .research-header { text-align: center; margin-bottom: 6rem; }
+    .research-header h2 {
+      font-family: 'Playfair Display', 'Noto Sans TC', serif; font-size: 4rem; font-weight: 700;
+      margin-bottom: 1.5rem; opacity: 0; transform: translateY(50px) scale(0.95); transition: all 1s;
+    }
+    .research-header h2.visible { opacity: 1; transform: translateY(0) scale(1); }
+    .research-header p {
+      font-size: 1.15rem; color: var(--text-light); max-width: 600px; margin: 0 auto;
+      opacity: 0; transition: all 0.8s 0.3s;
+    }
+    .research-header p.visible { opacity: 1; }
+    .research-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+    .research-card {
+      position: relative; background: white; border-radius: 16px; overflow: hidden;
+      aspect-ratio: 4/3; cursor: pointer; opacity: 1; transform: translateY(0);
+      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .research-card { opacity: 0; transform: translateY(60px); }
+      .research-card.visible { opacity: 1; transform: translateY(0); }
+    }
+    .research-card:nth-child(1) { transition-delay: 0s; }
+    .research-card:nth-child(2) { transition-delay: 0.15s; }
+    .research-card:nth-child(3) { transition-delay: 0.3s; }
+    .research-card:nth-child(4) { transition-delay: 0.45s; }
+    .research-card-bg {
+      position: absolute; inset: 0;
+      transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      will-change: transform; transform: translateZ(0);
+    }
+    .research-card-bg::after {
+      content: ''; position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.5) 35%, rgba(0,0,0,0.15) 60%, transparent 80%);
+    }
+    .research-card:nth-child(1) .research-card-bg { background: url('images/research_imaging.webp') center/cover no-repeat, linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%); }
+    .research-card:nth-child(1) .research-card-bg::after { background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.5) 35%, rgba(0,0,0,0.15) 60%, transparent 80%); }
+    .research-card:nth-child(2) .research-card-bg { background: url('images/research_biomech.webp') center/cover no-repeat, linear-gradient(135deg, #2d1b4e 0%, #1a1a2e 100%); }
+    .research-card:nth-child(2) .research-card-bg::after { background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.5) 35%, rgba(0,0,0,0.15) 60%, transparent 80%); }
+    .research-card:nth-child(3) .research-card-bg { background: url('images/research_rehab.webp') center/cover no-repeat, linear-gradient(135deg, #1a3a2a 0%, #0f1f15 100%); }
+    .research-card:nth-child(3) .research-card-bg::after { background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.5) 35%, rgba(0,0,0,0.15) 60%, transparent 80%); }
+    .research-card:nth-child(4) .research-card-bg { background: url('images/research_ai.webp') center/cover no-repeat, linear-gradient(135deg, #4a1c1c 0%, #2a0f0f 100%); }
+    .research-card:nth-child(4) .research-card-bg::after { background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.5) 35%, rgba(0,0,0,0.15) 60%, transparent 80%); }
+    .research-card:hover .research-card-bg { transform: scale(1.1) rotate(1deg); }
+    .research-card-content {
+      position: relative; z-index: 1; height: 100%; padding: 3rem; display: flex;
+      flex-direction: column; justify-content: flex-end; color: white;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.9), 0 1px 4px rgba(0,0,0,0.7);
+    }
+    .research-icon { width: 56px; height: 56px; margin-bottom: auto; opacity: 0.7; transition: all 0.5s; }
+    .research-card:hover .research-icon { opacity: 1; transform: translateY(-5px); }
+    .research-card h3 {
+      font-size: 1.75rem; font-weight: 600; margin-bottom: 0.75rem;
+      transform: translateY(10px); transition: transform 0.5s;
+    }
+    .research-card:hover h3 { transform: translateY(0); }
+    .research-card p { font-size: 1rem; opacity: 0; max-height: 0; overflow: hidden; transition: all 0.5s; }
+    .research-card:hover p { opacity: 0.8; max-height: 100px; }
+
+    .publications { background: url('images/pub_bg.webp') center/cover no-repeat; padding: 10rem 3rem; position: relative; overflow: hidden; }
+    .publications::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.4); z-index: 0; }
+    .publications > .container { position: relative; z-index: 1; }
+    .publications-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 5rem; }
+    .publications-header h2 {
+      font-family: 'Playfair Display', serif; font-size: 3.5rem; color: white; opacity: 0;
+      transform: translateX(-50px); transition: all 1s;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.9), 0 1px 4px rgba(0,0,0,0.7);
+    }
+    .publications-header h2.visible { opacity: 1; transform: translateX(0); }
+    .publications-header p { color: rgba(255,255,255,0.9); }
+    .pub-list { list-style: none; }
+    .pub-item {
+      display: block; padding: 2.5rem 0;
+      border-bottom: 2px solid rgba(255,255,255,0.2); opacity: 0;
+      transform: translateX(-30px); transition: all 0.6s; will-change: transform;
+      transform: translateZ(0) translateX(-30px); cursor: pointer;
+    }
+    .pub-link {
+      display: grid; grid-template-columns: 80px 1fr auto; gap: 2.5rem; align-items: start;
+      color: inherit; text-decoration: none; width: 100%;
+    }
+    .pub-link:hover, .pub-link:focus-visible { color: inherit; }
+    .pub-item.visible { opacity: 1; transform: translateZ(0) translateX(0); }
+    .pub-item:nth-child(1) { transition-delay: 0s; }
+    .pub-item:nth-child(2) { transition-delay: 0.1s; }
+    .pub-item:nth-child(3) { transition-delay: 0.2s; }
+    .pub-item:nth-child(4) { transition-delay: 0.3s; }
+    .pub-item:nth-child(5) { transition-delay: 0.4s; }
+    .pub-item:nth-child(6) { transition-delay: 0.5s; }
+    .pub-item:hover { padding-left: 1.5rem; background: rgba(255,255,255,0.1); border-radius: 8px; }
+    .pub-number {
+      font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 700;
+      color: #93c5fd; transition: all 0.4s;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+    }
+    .pub-item:hover .pub-number { color: #60a5fa; transform: scale(1.1); }
+    .pub-details h3 { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.5rem; line-height: 1.4; color: white; text-shadow: 0 1px 6px rgba(0,0,0,0.7); }
+    .pub-authors { font-size: 0.95rem; color: rgba(255,255,255,0.85); }
+    .pub-journal { font-size: 0.95rem; font-style: italic; color: #93c5fd; white-space: nowrap; }
+
+    .team { background: var(--primary); color: white; padding: 10rem 3rem; overflow: hidden; }
+    .team-header { text-align: center; margin-bottom: 6rem; }
+    .team-header h2 {
+      font-family: 'Playfair Display', 'Noto Sans TC', serif; font-size: 4rem; color: white;
+      margin-bottom: 1rem; opacity: 0; transform: translateY(50px); transition: all 1s;
+    }
+    .team-header h2.visible { opacity: 1; transform: translateY(0); }
+    .team-header p { font-size: 1.15rem; opacity: 0; transition: all 0.8s 0.3s; }
+    .team-header p.visible { opacity: 0.7; }
+    .team-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 3rem;
+      max-width: 1200px; margin: 0 auto;
+    }
+    .team-member {
+      text-align: center; opacity: 0; transform: translateY(40px) scale(0.9); transition: all 0.8s;
+    }
+    .team-member.visible { opacity: 1; transform: translateY(0) scale(1); }
+    .team-member:nth-child(1) { transition-delay: 0s; }
+    .team-member:nth-child(2) { transition-delay: 0.15s; }
+    .team-member:nth-child(3) { transition-delay: 0.3s; }
+    .team-member:nth-child(4) { transition-delay: 0.45s; }
+    .team-avatar {
+      width: 160px; height: 160px; border-radius: 50%; margin: 0 auto 1.5rem; overflow: hidden;
+      border: 3px solid rgba(255,255,255,0.1);
+      transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .team-avatar-placeholder {
+      width: 100%; height: 100%; background: rgba(255,255,255,0.08);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3rem; font-weight: 700; color: rgba(255,255,255,0.2);
+    }
+    .team-member:hover .team-avatar { border-color: var(--accent); transform: translateY(-10px) scale(1.05); }
+    .team-member h4 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.25rem; }
+    .team-member p { font-size: 0.9rem; opacity: 0.5; }
+
+    .contact { background: url('images/contact_bg.webp') center/cover no-repeat; padding: 10rem 3rem; position: relative; overflow: hidden; }
+    .contact::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.45); z-index: 0; }
+    .contact > .contact-grid { position: relative; z-index: 1; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8rem; max-width: 1200px; margin: 0 auto; }
+    .contact-info h2 {
+      font-family: 'Playfair Display', 'Noto Sans TC', serif; font-size: 3.5rem; color: white;
+      margin-bottom: 3rem; opacity: 0; transform: translateY(40px); transition: all 1s;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.9), 0 1px 4px rgba(0,0,0,0.7);
+    }
+    .contact-info h2.visible { opacity: 1; transform: translateY(0); }
+    .contact-item { margin-bottom: 2.5rem; opacity: 0; transform: translateX(-20px); transition: all 0.6s; }
+    .contact-item.visible { opacity: 1; transform: translateX(0); }
+    .contact-item:nth-child(2) { transition-delay: 0.1s; }
+    .contact-item:nth-child(3) { transition-delay: 0.2s; }
+    .contact-item:nth-child(4) { transition-delay: 0.3s; }
+    .contact-item h4 {
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase;
+      color: #93c5fd; margin-bottom: 0.75rem;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+    }
+    .contact-item p, .contact-item a { font-size: 1.15rem; color: white; text-decoration: none; transition: color 0.3s; text-shadow: 0 1px 6px rgba(0,0,0,0.7); }
+    .contact-item a:hover { color: #93c5fd; }
+    .contact-form {
+      display: flex; flex-direction: column; gap: 1.75rem; opacity: 0;
+      transform: translateY(40px); transition: all 1s 0.3s;
+    }
+    .contact-form.visible { opacity: 1; transform: translateY(0); }
+    .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+    .form-group label {
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase;
+      color: #93c5fd;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+    }
+    .form-group input, .form-group textarea {
+      padding: 1.1rem; border: 2px solid rgba(255,255,255,0.3); border-radius: 8px; font-family: inherit;
+      font-size: 16px; min-height: 44px; transition: all 0.3s; background: rgba(0,0,0,0.4);
+      color: white; -webkit-appearance: none; -moz-appearance: none; appearance: none;
+    }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.6); }
+    .form-group input:focus, .form-group textarea:focus {
+      outline: none; border-color: #60a5fa; background: rgba(0,0,0,0.6);
+      box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.3);
+    }
+    .form-group textarea { min-height: 140px; resize: vertical; }
+    .submit-btn {
+      padding: 1.1rem 2.5rem; background: #2563eb; color: white; border: none;
+      border-radius: 8px; font-size: 0.9rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; cursor: pointer; transition: all 0.4s; position: relative;
+      overflow: hidden; -webkit-appearance: none; -moz-appearance: none; appearance: none;
+      min-height: 44px;
+    }
+    .submit-btn::before {
+      content: ''; position: absolute; inset: 0; background: #1d4ed8;
+      transform: translateX(-100%); transition: transform 0.4s;
+    }
+    .submit-btn:hover::before { transform: translateX(0); }
+    .submit-btn span { position: relative; z-index: 1; }
+
+    footer {
+      background: var(--primary); color: white; padding: 4rem 3rem;
+      padding-bottom: calc(4rem + env(safe-area-inset-bottom, 0px)); text-align: center;
+    }
+    footer p { font-size: 0.9rem; opacity: 0.85; }
+
+    .horizontal-section { background: url('images/stats_bg.webp') center/cover no-repeat; padding: 8rem 0; overflow: hidden; position: relative; }
+    .horizontal-section::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.4); z-index: 0; }
+    .horizontal-section > * { position: relative; z-index: 1; }
+    .horizontal-title { text-align: center; margin-bottom: 4rem; }
+    .horizontal-title h2 {
+      font-family: 'Playfair Display', 'Noto Sans TC', serif; font-size: 3rem; color: white;
+      opacity: 0; transform: translateY(30px); transition: all 0.8s;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.9), 0 1px 4px rgba(0,0,0,0.7);
+    }
+    .horizontal-title h2.visible { opacity: 1; transform: translateY(0); }
+    .horizontal-track {
+      display: flex; gap: 2rem; padding: 0 3rem;
+      animation: scroll 30s linear infinite; will-change: transform;
+    }
+    @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    .stat-card {
+      flex-shrink: 0; width: 300px; padding: 3rem; background: rgba(0,0,0,0.45);
+      border-radius: 16px; border: 1px solid rgba(255,255,255,0.15); text-align: center; color: white;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.8), 0 1px 3px rgba(0,0,0,0.6);
+    }
+    .stat-number {
+      font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: 700; margin-bottom: 0.5rem;
+      color: #60a5fa;
+    }
+    .stat-label { font-size: 0.9rem; opacity: 0.85; text-transform: uppercase; letter-spacing: 0.06em; line-height: 1.45; overflow-wrap: break-word; }
+    .stat-number.funding-figure { font-size: 2.2rem; line-height: 1.2; }
+    .stat-number.funding-figure span { display: block; }
+    .impact-note {
+      color: rgba(255,255,255,0.92); max-width: 42rem; margin: 1rem auto 0;
+      font-size: 1rem; line-height: 1.6; padding: 0 1.5rem;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+    }
+
+    .gallery-section { padding: 10rem 3rem; background: var(--bg-alt); }
+    .gallery-header { text-align: center; margin-bottom: 5rem; }
+    .gallery-header h2 {
+      font-family: 'Playfair Display', 'Noto Sans TC', serif; font-size: 3.5rem; opacity: 0;
+      transform: translateY(30px); transition: all 0.8s;
+    }
+    .gallery-header h2.visible { opacity: 1; transform: translateY(0); }
+    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; max-width: 1400px; margin: 0 auto; }
+    .gallery-item {
+      position: relative; aspect-ratio: 3/2; border-radius: 12px; overflow: hidden;
+      opacity: 1; transform: scale(1); transition: all 0.8s; will-change: transform;
+    }
+    a.gallery-item { display: block; color: inherit; text-decoration: none; }
+    a.paper-link { min-width: 0; min-height: 0; color: var(--accent); text-decoration: underline; text-underline-offset: 0.15em; }
+    @media (prefers-reduced-motion: no-preference) {
+      .gallery-item { opacity: 0; transform: scale(0.9); }
+      .gallery-item.visible { opacity: 1; transform: scale(1); }
+    }
+    .gallery-item:nth-child(1) { transition-delay: 0s; }
+    .gallery-item:nth-child(2) { transition-delay: 0.1s; }
+    .gallery-item:nth-child(3) { transition-delay: 0.2s; }
+    .gallery-item:nth-child(4) { transition-delay: 0.3s; }
+    .gallery-item:nth-child(5) { transition-delay: 0.4s; }
+    .gallery-item:nth-child(6) { transition-delay: 0.5s; }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s; }
+    .gallery-item:hover img { transform: scale(1.1); }
+    .gallery-source {
+      position: absolute; bottom: 0; left: 0; right: 0; padding: 0.5rem 1.5rem;
+      background: rgba(0,0,0,0.7); color: rgba(255,255,255,0.9); font-size: 0.75rem;
+      font-style: italic; z-index: 2;
+    }
+    .gallery-overlay {
+      position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+      display: flex; align-items: flex-end; padding: 1.5rem; opacity: 0; transition: opacity 0.4s;
+    }
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+    .gallery-overlay span { color: white; font-weight: 500; }
+
+    @media (max-width: 1024px) {
+      .about { grid-template-columns: 1fr; }
+      .about-image-wrapper { position: relative; height: 60svh; height: 60dvh; }
+      .about-content { padding: 5rem 2rem; }
+      .about-image-wrapper > div { flex-direction: column !important; gap: 0 !important; padding: 1.5rem !important; }
+      .about-image-wrapper > div > div { max-width: 100% !important; }
+      .research-grid { grid-template-columns: 1fr; }
+      .team-grid { grid-template-columns: repeat(2, 1fr); }
+      .contact-grid { grid-template-columns: 1fr; gap: 4rem; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+@media (max-width: 768px) {
+      .hamburger { display: flex; }
+      nav { padding: 0.65rem 1rem; flex-wrap: nowrap; }
+      .nav-logo img { height: 40px; width: 36px; max-width: 36px; max-height: 40px; }
+      .nav-links { display: none; }
+      section { padding: 6rem 1.5rem; }
+      .hero { min-height: 100svh; min-height: 100dvh; padding-top: 5.25rem; padding-bottom: 4.25rem; }
+      .hero h1 { font-size: 2.7rem; }
+      .hero-logo { width: min(210px, 58vw); }
+      .scroll-indicator { display: none; }
+      .about-image-wrapper { position: relative; height: 50svh; height: 50dvh; }
+      .about-content { padding: 4rem 1.5rem; }
+      .about-image-wrapper > div { flex-direction: column !important; gap: 0 !important; padding: 1rem !important; }
+      .about-image-wrapper > div > div { max-width: 100% !important; }
+      .about-image-wrapper img { object-position: center top; }
+      .about-image-wrapper .gradient-overlay { background: linear-gradient(rgba(10,10,18,0.3), rgba(10,10,18,0.9) 40%, rgba(10,10,18,0.98) 70%); }
+      .about-image-wrapper .gradient-overlay > div { background: rgba(0,0,0,0.85) !important; border-color: rgba(96,165,250,0.6) !important; }
+      .about-image-wrapper .gradient-overlay > div + div { border-color: rgba(168,85,247,0.6) !important; }
+      .about-image-wrapper .gradient-overlay > div > div { color: #fff !important; text-shadow: 0 2px 8px rgba(0,0,0,0.9) !important; }
+      .about-image-wrapper .gradient-overlay > div > div:first-child { color: #60a5fa !important; text-shadow: none !important; }
+      .about-image-wrapper .gradient-overlay > div + div > div:first-child { color: #a855f7 !important; text-shadow: none !important; }
+      .research-grid { grid-template-columns: 1fr; }
+      .research-card { aspect-ratio: auto; }
+      .publications { padding: 6rem 1.5rem; }
+      .publications-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+      .pub-link { grid-template-columns: 1fr; gap: 0.5rem; }
+      .pub-journal { white-space: normal; }
+      .pub-number { font-size: 1.5rem; }
+      .team-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .contact { padding: 6rem 1.5rem; }
+      .contact-grid { gap: 3rem; }
+      .contact-info h2 { font-size: 2.5rem; }
+      .research { padding: 6rem 1.5rem; }
+      .research-header h2 { font-size: 2.5rem; }
+      .gallery-section { padding: 6rem 1.5rem; }
+      .gallery-header h2 { font-size: 2.5rem; }
+      .horizontal-section { padding: 5rem 0; }
+      .horizontal-title h2 { font-size: 2rem; }
+      .horizontal-track { animation: none; display: flex; gap: 1rem; padding: 0 1.5rem; overflow-x: auto; -webkit-overflow-scrolling: touch; scroll-snap-type: x mandatory; scrollbar-width: none; }
+      .horizontal-track::-webkit-scrollbar { display: none; }
+      .stat-card { scroll-snap-align: start; width: 280px; }
+      .stat-card.stat-dup { display: none; }
+    }
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 3rem; }
+      .hero-tagline { font-size: 1rem; }
+      .about-content h2 { font-size: 2rem; }
+      .team-avatar { width: 120px; height: 120px; }
+      .team-member h4 { font-size: 1rem; }
+      .stat-card { width: 250px; padding: 2rem; }
+      .stat-number { font-size: 3rem; }
+      .stat-number.funding-figure { font-size: 1.65rem; }
+      .contact-info h2, .research-header h2, .gallery-header h2 { font-size: 2rem; }
+    }
+    @media print {
+      nav, .hamburger, .mobile-overlay, .scroll-indicator, .hero::before, footer { display: none !important; }
+      body { color: #000; background: #fff; font-size: 12pt; }
+      section { padding: 2rem 0; page-break-inside: avoid; }
+      .hero { min-height: auto; height: auto; padding: 2rem 0; background: none; }
+      .hero h1 { color: #000; font-size: 24pt; }
+      .hero-subtitle, .hero-tagline { color: #333; opacity: 1; transform: none; animation: none; }
+      .research-card, .gallery-item, .team-member, .pub-item, .contact-item, .section-label, .contact-form {
+        opacity: 1 !important; transform: none !important; animation: none !important;
+      }
+      .about-image-wrapper { position: relative; height: 200px; }
+      .about-image-wrapper > div { flex-direction: column !important; gap: 0 !important; padding: 0.75rem !important; }
+      .about-image-wrapper > div > div { max-width: 100% !important; }
+      .research-card-bg { background: #f0f0f0 !important; }
+      .research-card, .research-card-content, .research-card h3, .research-card p {
+        color: #000 !important; opacity: 1 !important; max-height: none;
+      }
+      a::after { content: " (" attr(href) ")"; font-size: 0.8em; color: #666; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important; animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important; scroll-behavior: auto !important;
+      }
+      .hero-subtitle, .hero h1, .hero-tagline, .scroll-indicator { opacity: 1; transform: none; animation: none; }
+      .research-card, .gallery-item, .team-member, .pub-item, .section-label, .contact-item, .contact-form, .contact-info h2 {
+        opacity: 1; transform: none; transition: none;
+      }
+      .horizontal-track { animation: none; }
+    }
+    /* Lab News */
+    .news { background: var(--bg-alt); padding: 10rem 3rem; }
+    .news-header { text-align: center; margin-bottom: 5rem; }
+    .news-header h2 { font-family: 'Playfair Display', serif; font-size: 3.5rem; margin-bottom: 1rem; }
+    .news-grid { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 0; }
+    .news-item { display: grid; grid-template-columns: 140px 1fr; gap: 2.5rem; padding: 2.5rem 0; border-bottom: 1px solid #e5e7eb; opacity: 0; transform: translateY(30px); transition: all 0.6s; }
+    .news-item.visible { opacity: 1; transform: translateY(0); }
+    .news-date { font-size: 0.85rem; font-weight: 600; color: var(--accent); letter-spacing: 0.05em; padding-top: 0.3rem; white-space: nowrap; }
+    .news-content h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; line-height: 1.4; }
+    .news-content p { font-size: 1rem; color: var(--text-light); line-height: 1.7; }
+
+    /* Join Us */
+    .join { background: var(--bg); padding: 10rem 3rem; }
+    .join-content { max-width: 1100px; margin: 0 auto; text-align: center; }
+    .join-content h2 { font-family: 'Playfair Display', serif; font-size: 3.5rem; margin-bottom: 1rem; }
+    .join-subtitle { font-size: 1.15rem; color: var(--text-light); max-width: 600px; margin: 0 auto 4rem; }
+    .join-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; margin-bottom: 4rem; }
+    .join-card { background: var(--bg-alt); border-radius: 16px; padding: 3rem 2rem; text-align: left; transition: all 0.4s; border: 1px solid transparent; }
+    .join-card:hover { border-color: var(--accent); transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.06); }
+    .join-icon { color: var(--accent); margin-bottom: 1.5rem; }
+    .join-card h3 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.75rem; overflow-wrap: break-word; }
+    .join-card p { font-size: 0.95rem; color: var(--text-light); line-height: 1.7; overflow-wrap: break-word; }
+    .join-cta { margin-top: 2rem; }
+    .join-cta p { font-size: 1rem; color: var(--text-light); margin-bottom: 0.5rem; }
+    .join-email { font-size: 1.15rem; font-weight: 600; color: var(--accent); text-decoration: none; border-bottom: 2px solid transparent; transition: border-color 0.3s; }
+    .join-email:hover { border-color: var(--accent); }
+
+    /* Donate */
+    .donate { background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%); padding: 10rem 3rem; color: white; text-align: center; }
+    .donate .section-label { color: rgba(255,255,255,0.4); }
+    .donate h2 { font-family: 'Playfair Display', serif; font-size: 3.5rem; color: white; margin-bottom: 1rem; }
+    .donate-subtitle { font-size: 1.15rem; color: rgba(255,255,255,0.7); max-width: 600px; margin: 0 auto 3rem; }
+    .donate-options { display: flex; gap: 1.5rem; justify-content: center; margin-bottom: 2rem; flex-wrap: wrap; }
+    .donate-btn { display: inline-block; padding: 1rem 2.5rem; border-radius: 8px; font-size: 0.95rem; font-weight: 600; text-decoration: none; letter-spacing: 0.05em; transition: all 0.4s; }
+    .donate-btn { background: var(--accent); color: white; }
+    .donate-btn:hover { background: #2563eb; transform: translateY(-2px); }
+    .donate-btn-outline { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.3); }
+    .donate-btn-outline:hover { border-color: white; background: rgba(255,255,255,0.1); }
+    .donate-note { font-size: 0.9rem; color: rgba(255,255,255,0.5); }
+
+    /* Footer Links */
+    .footer-links { display: flex; gap: 2rem; justify-content: center; margin-bottom: 1.5rem; flex-wrap: wrap; }
+    .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.85rem; transition: color 0.3s; }
+    .footer-links a:hover { color: white; }
+
+    /* Responsive additions */
+    @media (max-width: 1024px) {
+      .join-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .news-item { grid-template-columns: 1fr; gap: 0.5rem; }
+      .join { padding: 5rem 1.25rem; }
+      .join-content h2 { font-size: 2.4rem; }
+      .join-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+      .join-card { padding: 1.75rem 1.25rem; }
+      .donate-options { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+  <nav id="navbar">
+    <a href="#home" class="nav-logo"><img src="images/trimed-mark.png?v=mark" alt="TriMED" width="578" height="640"></a>
+    <ul class="nav-links">
+      <li><a href="#home"><span class="en">Home</span><span class="zh">首頁</span></a></li>
+      <li><a href="#about"><span class="en">About</span><span class="zh">關於</span></a></li>
+      <li><a href="#research"><span class="en">Research</span><span class="zh">研究</span></a></li>
+      <li><a href="#publications"><span class="en">Publications</span><span class="zh">論文</span></a></li>
+      <li><a href="team.html"><span class="en">Team</span><span class="zh">團隊</span></a></li>
+      <li><a href="team.html#teaching"><span class="en">Courses &amp; Instruction</span><span class="zh">課程與教學</span></a></li>
+      <li><a href="#contact"><span class="en">Contact</span><span class="zh">聯絡</span></a></li>
+      <li><a href="#donate"><span class="en">Donate</span><span class="zh">捐款</span></a></li>
+    </ul>
+    <div class="lang-toggle">
+      <button id="btn-en" class="active" onclick="setLang('en')">EN</button>
+      <button id="btn-zh" onclick="setLang('zh')">中</button>
+    </div>
+    <button class="hamburger" id="hamburger-btn" aria-label="Toggle menu">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+  </nav>
+
+  <div class="mobile-overlay" id="mobile-overlay">
+    <ul class="mobile-overlay-nav">
+      <li><a href="#home" class="mobile-nav-link"><span class="en">Home</span><span class="zh">首頁</span></a></li>
+      <li><a href="#about" class="mobile-nav-link"><span class="en">About</span><span class="zh">關於</span></a></li>
+      <li><a href="#research" class="mobile-nav-link"><span class="en">Research</span><span class="zh">研究</span></a></li>
+      <li><a href="#publications" class="mobile-nav-link"><span class="en">Publications</span><span class="zh">論文</span></a></li>
+      <li><a href="team.html" class="mobile-nav-link"><span class="en">Team</span><span class="zh">團隊</span></a></li>
+      <li><a href="team.html#teaching" class="mobile-nav-link"><span class="en">Courses &amp; Instruction</span><span class="zh">課程與教學</span></a></li>
+      <li><a href="#contact" class="mobile-nav-link"><span class="en">Contact</span><span class="zh">聯絡</span></a></li>
+      <li><a href="#donate" class="mobile-nav-link"><span class="en">Donate</span><span class="zh">捐款</span></a></li>
+    </ul>
+    <div class="lang-toggle">
+      <button id="btn-en-mobile" onclick="setLang('en')">EN</button>
+      <button id="btn-zh-mobile" onclick="setLang('zh')">中</button>
+    </div>
+  </div>
+
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <p class="hero-subtitle"><span class="en">National Defense Medical University</span><span class="zh">國防醫學大學</span></p>
+      <img class="hero-logo" src="images/trimed-logo.png?v=2k" alt="TriMED — Theranostic Research and Intelligent Medicine Lab">
+      <h1>TriMED<br>LAB</h1>
+      <p class="hero-tagline"><span class="en">Quantitative Medical Imaging &amp; Rehabilitation Science</span><span class="zh">定量醫學影像與復健科學</span></p>
+    </div>
+    <div class="scroll-indicator">
+      <span><span class="en">Scroll</span><span class="zh">向下捲動</span></span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="about-image-wrapper">
+      <img src="images/gallery_1.webp" alt="Wearable Ultrasound Research" style="width:100%;height:100%;object-fit:cover;">
+      <div class="gradient-overlay" style="position:absolute;bottom:0;left:0;right:0;padding:2.5rem;background:linear-gradient(transparent,rgba(10,10,18,0.85) 70%);display:flex;flex-direction:column;justify-content:flex-end;min-height:40%;">
+        <div style="background:rgba(0,0,0,0.5);border:1px solid rgba(96,165,250,0.3);border-radius:12px;padding:1.5rem 2rem;backdrop-filter:blur(6px);max-width:480px;">
+          <div style="font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:#60a5fa;margin-bottom:0.5rem;font-weight:600;"><span class="en">Mission</span><span class="zh">使命</span></div>
+          <div style="color:#fff;font-size:0.95rem;line-height:1.6;text-shadow:0 1px 6px rgba(0,0,0,0.8);"><span class="en">The <strong style="color:#60a5fa;">TriMED</strong> Laboratory (<strong>T</strong>heranostic <strong>R</strong>esearch and <strong>I</strong>ntelligent <strong>Med</strong>icine) is dedicated to advancing rehabilitation science through quantitative ultrasound imaging and artificial intelligence, bridging scientific discovery with clinical practice.</span><span class="zh"><strong style="color:#60a5fa;">TriMED</strong> 實驗室（<strong>診療一體研究與智慧醫療實驗室</strong>）致力於透過定量超音波影像與人工智慧推動復健科學，連結科學發現與臨床實踐。</span></div>
+        </div>
+        <div style="background:rgba(0,0,0,0.5);border:1px solid rgba(168,85,247,0.3);border-radius:12px;padding:1.5rem 2rem;backdrop-filter:blur(6px);max-width:480px;margin-top:1rem;">
+          <div style="font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:#a855f7;margin-bottom:0.5rem;font-weight:600;"><span class="en">Vision</span><span class="zh">願景</span></div>
+          <div style="color:#fff;font-size:0.95rem;line-height:1.6;text-shadow:0 1px 6px rgba(0,0,0,0.8);"><span class="en">At <strong style="color:#a855f7;">TriMED</strong>, we envision a future where precision imaging and AI-driven diagnostics enable early detection, personalized treatment, and improved outcomes for individuals with neuromusculoskeletal disorders.</span><span class="zh">在 <strong style="color:#a855f7;">TriMED</strong>，我們願景打造一個精準影像與 AI 輔助診斷的未來，實現早期偵測、個人化治療，改善神經肌肉骨骼疾患之照護成果。</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="about-content">
+      <span class="section-label" data-animate><span class="en">About</span><span class="zh">關於</span></span>
+      <h2 data-animate><span class="en">TriMED Lab — Quantitative Imaging & Rehabilitation</span><span class="zh">診療一體研究與智慧醫療實驗室 — 定量影像與復健科學</span></h2>
+      <p data-animate><span class="en">We are the <strong>TriMED Laboratory</strong> at National Defense Medical University, dedicated to developing novel diagnostic and prognostic tools through quantitative ultrasound imaging, shear wave elastography, and artificial intelligence.</span><span class="zh">我們是<strong>診療一體研究與智慧醫療實驗室（TriMED Laboratory）</strong>，位於國防醫學大學，致力於開發結合定量超音波影像、剪力波彈性成像及人工智慧之創新診斷與預後工具。</span></p>
+      <p data-animate><span class="en">Our work bridges biomedical science with clinical rehabilitation — translating cutting-edge imaging technology into precision medicine for patients with shoulder disorders, spinal cord injury, and neuromusculoskeletal conditions.</span><span class="zh">我們的工作結合生物醫學科學與臨床復健，將尖端影像技術轉化為精準醫療，服務肩部疾患、脊髓損傷及神經肌肉骨骼疾病患者。</span></p>
+    </div>
+  </section>
+
+  <section class="news" id="news">
+    <div class="container">
+      <div class="news-header">
+        <span class="section-label" data-animate><span class="en">News</span><span class="zh">最新消息</span></span>
+        <h2 data-animate><span class="en">Lab News</span><span class="zh">實驗室最新消息</span></h2>
+      </div>
+      <div class="news-grid">
+        <!-- SonoMedic finalist -->
+        <div class="news-item" data-animate>
+          <div class="news-date"><span class="en">2026</span><span class="zh">2026年</span></div>
+          <div class="news-content">
+            <h3><span class="en">SonoMedic Named TWmedica Finalist</span><span class="zh">SonoMedic 入圍台灣醫＋加速器決賽</span></h3>
+            <p><span class="en">Team leader for SonoMedic, an AI-guided bedside ultrasound platform for musculoskeletal and sarcopenia assessment, in the Incubation Track of the TWmedica Medical Startup Accelerator (Industrial Technology Research Institute, MacKay Memorial Hospital, and Tri-Service General Hospital). Finals are November 2, 2026.</span><span class="zh">帶領 SonoMedic 團隊入圍台灣醫＋加速器孵化育成組決賽。SonoMedic 為床邊超音波人工智慧平台，用於肌肉骨骼與肌少症評估；主辦單位為工研院、馬偕紀念醫院與三軍總醫院。決賽日期為 2026 年 11 月 2 日。</span></p>
+          </div>
+        </div>
+        <!-- Invited lectures -->
+        <div class="news-item" data-animate>
+          <div class="news-date"><span class="en">Oct 2026</span><span class="zh">2026年10月</span></div>
+          <div class="news-content">
+            <h3><span class="en">Invited Lectures in Precision Rehabilitation</span><span class="zh">精準復健受邀演講</span></h3>
+            <p><span class="en">Presented "Together in Precision Rehabilitation: From Early Detection to Functional Restoration" at the AI in Medicine Symposium, Catholic University of Korea, Seoul (October 16). Also spoke at the NDMU neuromusculoskeletal symposium (October 3) and the TSMISS/TSESS Autumn International Symposium in Taoyuan (August 29).</span><span class="zh">於韓國天主教大學人工智慧醫學研討會（首爾，10 月 16 日）發表「精準復健：從早期偵測到功能恢復」。並於國防醫學大學神經肌肉骨骼整合研討會（10 月 3 日）及 TSMISS／TSESS 秋季國際研討會（桃園，8 月 29 日）受邀演講。</span></p>
+          </div>
+        </div>
+        <!-- Life 2026 -->
+        <div class="news-item" data-animate>
+          <div class="news-date"><span class="en">2026</span><span class="zh">2026年</span></div>
+          <div class="news-content">
+            <h3><span class="en">New Publication in Life</span><span class="zh">Life 期刊新發表</span></h3>
+            <p><span class="en">"Beyond Corticosteroids: Ultrasound-Guided Regenerative and Hydrodissection Therapies for Adhesive Capsulitis" (Chang, Lin, Chen, and Chou), Life, 2026.</span><span class="zh">「類固醇之外：超音波導引再生與水分離療法治療沾黏性關節囊炎」（Chang、Lin、Chen、Chou），Life，2026。</span></p>
+          </div>
+        </div>
+        <!-- MOE grant -->
+        <div class="news-item" data-animate>
+          <div class="news-date"><span class="en">2026</span><span class="zh">2026年</span></div>
+          <div class="news-content">
+            <h3><span class="en">Youth Overseas Dream Fund (NT$8.3M)</span><span class="zh">青年海外圓夢計畫（新臺幣 830 萬）</span></h3>
+            <p><span class="en">PI — "Super Intelligence Rehabilitation Medicine: Dallas Clinical Translation, Combat-Injury Rehabilitation, and the Taiwan–U.S. Youth Academic Forum." Youth Development Administration, Ministry of Education (NT$8,304,900; program October 17–November 4, 2027).</span><span class="zh">計畫主持人——「超智能復健醫學：達拉斯臨床轉譯、戰傷復健與臺美青年學術論壇」。教育部青年發展署青年海外圓夢計畫・海外展翅軌（新臺幣 8,304,900 元；活動期間 2027 年 10 月 17 日至 11 月 4 日）。</span></p>
+          </div>
+        </div>
+        <!-- TSGH grant -->
+        <div class="news-item" data-animate>
+          <div class="news-date"><span class="en">2026</span><span class="zh">2026年</span></div>
+          <div class="news-content">
+            <h3><span class="en">Sarcopenia Prediction Grant (NT$455,000)</span><span class="zh">肌少症預測模式計畫（新臺幣 45.5 萬）</span></h3>
+            <p><span class="en">Co-PI — a multimodal predictive model for sarcopenia in older adults, combining ultrasound elastography, biomarkers, and electronic medical records. Tri-Service General Hospital Medical Research and Development Program (2027).</span><span class="zh">共同主持人——結合超音波彈性成像、生物標記與電子病歷，發展高齡肌少症多模態預測模式。三軍總醫院醫學研究發展計畫（2027）。</span></p>
+          </div>
+        </div>
+        <!-- Course -->
+        <div class="news-item" data-animate>
+          <div class="news-date"><span class="en">Fall 2026</span><span class="zh">2026年秋</span></div>
+          <div class="news-content">
+            <h3><span class="en">New Doctoral Course in AI Radiomics</span><span class="zh">開設人工智慧影像組學博士課程</span></h3>
+            <p><span class="en">Designed and taught "Artificial Intelligence for Medical Imaging Radiomics: Analyses and Applications" (3 credits) at the Graduate Institute of Medical Sciences, with 16 doctoral students and 17 faculty and clinician auditors from nine clinical departments.</span><span class="zh">於醫學科學研究所開設並授課「人工智慧醫學影像組學：分析與應用」（3 學分）。修課博士生 16 人，另有來自九個臨床科部的師資與醫師旁聽 17 人。</span></p>
+          </div>
+        </div>
+        <!-- ORS chair -->
+        <div class="news-item" data-animate>
+          <div class="news-date"><span class="en">2026</span><span class="zh">2026年</span></div>
+          <div class="news-content">
+            <h3><span class="en">ORS Shoulder and Elbow Topic Chair</span><span class="zh">ORS 肩肘主題主席</span></h3>
+            <p><span class="en">Appointed Topic Chair for Shoulder and Elbow of the Orthopaedic Research Society, and moderator of Clinical Research Methods at the ORS Scientific Program.</span><span class="zh">獲任骨科研究學會（ORS）肩肘主題主席，並主持 ORS 科學議程「臨床研究方法」場次。</span></p>
+          </div>
+        </div>
+        <!-- Honorable mention, dated from CV -->
+        <div class="news-item" data-animate>
+          <div class="news-date"><span class="en">Jun 2026</span><span class="zh">2026年6月</span></div>
+          <div class="news-content">
+            <h3><span class="en">Regenerative Medicine Podium Honorable Mention</span><span class="zh">再生醫學論文傑出獎</span></h3>
+            <p><span class="en">Honorable Mention for a podium presentation at the 16th Joint Teaching and Research Symposium of Graduate Institutes of Clinical Medicine and the 1st International Academic Conference of Mackay Medical College (June 27).</span><span class="zh">於第 16 屆臨床醫學研究所聯合教學研究研討會暨馬偕醫學院第一屆國際學術研討會（6 月 27 日）獲得再生醫學口頭報告傑出獎。</span></p>
+          </div>
+        </div>
+        <!-- ORS Charlotte -->
+        <div class="news-item" data-animate>
+          <div class="news-date"><span class="en">Mar 2026</span><span class="zh">2026年3月</span></div>
+          <div class="news-content">
+            <h3><span class="en">ORS 2026 Regenerative Medicine Presentation</span><span class="zh">2026 ORS 年會再生醫學發表</span></h3>
+            <p><span class="en">Trainee-led systematic review and meta-analysis of regenerative medicine interventions for spinal cord injury, presented at the Orthopaedic Research Society Annual Meeting, Charlotte, NC (March 27–31).</span><span class="zh">學員主導之脊髓損傷再生醫學介入系統性回顧與統合分析，發表於骨科研究學會年會（美國夏洛特，3 月 27–31 日）。</span></p>
+          </div>
+        </div>
+        <!-- PM&R and PLOS ONE -->
+        <div class="news-item" data-animate>
+          <div class="news-date"><span class="en">2026</span><span class="zh">2026年</span></div>
+          <div class="news-content">
+            <h3><span class="en">Two Publications in PM&R and PLOS ONE</span><span class="zh">PM&R 與 PLOS ONE 兩篇新發表</span></h3>
+            <p><span class="en">"<a class="paper-link" href="https://doi.org/10.1002/pmrj.70097" target="_blank" rel="noopener noreferrer">Quantitative Assessments of Ultrasound-Based Rotator Cuff Muscle Quality</a>" (PM&amp;R) and "<a class="paper-link" href="https://doi.org/10.1371/journal.pone.0347233" target="_blank" rel="noopener noreferrer">Effects of Resistance Exercises on Rotator Cuff Muscle Mechanical Characteristics</a>" (PLOS ONE).</span><span class="zh">「<a class="paper-link" href="https://doi.org/10.1002/pmrj.70097" target="_blank" rel="noopener noreferrer">基於超音波之旋轉袖肌肉品質定量評估</a>」(PM&amp;R) 與「<a class="paper-link" href="https://doi.org/10.1371/journal.pone.0347233" target="_blank" rel="noopener noreferrer">阻力運動對旋轉袖肌肉力學特性之影響</a>」(PLOS ONE)。</span></p>
+          </div>
+        </div>
+        <!-- NVIDIA & ACUE -->
+        <div class="news-item" data-animate>
+          <div class="news-date"><span class="en">2026</span><span class="zh">2026年</span></div>
+          <div class="news-content">
+            <h3><span class="en">NVIDIA & ACUE Certifications</span><span class="zh">NVIDIA 與 ACUE 認證</span></h3>
+            <p><span class="en">Earned NVIDIA Deep Learning Institute certification in "Building Agentic AI Applications with LLMs" and ACUE Certificate in Effective Teaching Practice Framework.</span><span class="zh">取得 NVIDIA 深度學習學院「建構 LLM 代理式 AI 應用」認證及有效教學實踐認證。</span></p>
+          </div>
+        </div>
+        <!-- News Item 5 -->
+        <div class="news-item" data-animate>
+          <div class="news-date"><span class="en">2025</span><span class="zh">2025年</span></div>
+          <div class="news-content">
+            <h3><span class="en">International Young Visiting Scholar Award</span><span class="zh">國際青年訪問學者獎</span></h3>
+            <p><span class="en">Received International Young Visiting Scholar award from the University Academic Alliance in Taiwan.</span><span class="zh">獲大學學術聯盟國際青年訪問學者獎。</span></p>
+          </div>
+        </div>
+        <!-- News Item 6 -->
+        <div class="news-item" data-animate>
+          <div class="news-date"><span class="en">2025</span><span class="zh">2025年</span></div>
+          <div class="news-content">
+            <h3><span class="en">Shoulder Muscle Quality Grant ($100K)</span><span class="zh">肩部肌肉品質計畫補助 ($100K)</span></h3>
+            <p><span class="en">PI — "Novel Shoulder Muscle Quality Measures to Guide Just-in-time Perioperative Strategies of Reverse Shoulder Arthroplasty," Trauma Research & Combat Casualty Care Collaborative (2025–2027).</span><span class="zh">PI —「肩部肌肉品質用於反向肩關節置換術術中策略」，創傷研究與戰傷護理協作計畫 (2025–2027)。</span></p>
+          </div>
+        </div>
+        <div class="news-item" data-animate>
+          <div class="news-date"><span class="en">2025</span><span class="zh">2025年</span></div>
+          <div class="news-content">
+            <h3><span class="en">Sarcopenia and Spine Fusion Grant ($100K)</span><span class="zh">肌少症與脊椎融合計畫補助 ($100K)</span></h3>
+            <p><span class="en">Co-PI — "Impact of Sarcopenia on Adjacent Segment Disease after Lumbar Spine Fusion Surgery," University of Texas System and University Academic Alliance in Taiwan (2025–2027).</span><span class="zh">共同主持人——「肌少症對腰椎融合術後鄰近節段病變之影響」，德州大學系統與台灣大學學術聯盟國際合作計畫 (2025–2027)。</span></p>
+          </div>
+        </div>
+        <!-- News Item 7 -->
+        <div class="news-item" data-animate>
+          <div class="news-date"><span class="en">2025</span><span class="zh">2025年</span></div>
+          <div class="news-content">
+            <h3><span class="en">ORS Annual Meeting Presentation</span><span class="zh">ORS 年會學術發表</span></h3>
+            <p><span class="en">Presented "Altered Supraspinatus Muscle Stiffness Following Shoulder Exercises Among Individuals with Rotator Cuff Tears" at ORS Annual Meeting, Phoenix, AZ.</span><span class="zh">於 ORS 年會發表「旋轉袖撕裂者肩部運動後岡上肌剛度變化」。</span></p>
+          </div>
+        </div>
+        <!-- News Item 8 -->
+        <div class="news-item" data-animate>
+          <div class="news-date"><span class="en">Sep 2024</span><span class="zh">2024年9月</span></div>
+          <div class="news-content">
+            <h3><span class="en">PMP Certification</span><span class="zh">專案管理師認證</span></h3>
+            <p><span class="en">Earned Project Management Professional (PMP) certification from Project Management Institute.</span><span class="zh">取得國際專案管理師 (PMP) 認證。</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="horizontal-section">
+    <div class="horizontal-title">
+      <h2 data-animate><span class="en">Our Impact</span><span class="zh">我們的影響力</span></h2>
+      <p class="impact-note"><span class="en">Laboratory totals. Peer-reviewed journal articles are counted apart from conference proceedings and include trainee-led papers.</span><span class="zh">實驗室合計。同儕審查期刊論文與會議論文分開計算，並包含學員第一作者論文。</span></p>
+    </div>
+    <div class="horizontal-track">
+      <div class="stat-card"><div class="stat-number">20</div><div class="stat-label"><span class="en">Peer-Reviewed Articles</span><span class="zh">同儕審查期刊論文</span></div></div>
+      <div class="stat-card"><div class="stat-number">7</div><div class="stat-label"><span class="en">Trainee-Led Articles</span><span class="zh">學員第一作者論文</span></div></div>
+      <div class="stat-card"><div class="stat-number funding-figure"><span>$452.5K</span><span>NT$8.76M</span></div><div class="stat-label"><span class="en">Laboratory Funding</span><span class="zh">實驗室經費</span></div></div>
+      <div class="stat-card"><div class="stat-number">26</div><div class="stat-label"><span class="en">Conference Proceedings</span><span class="zh">會議論文</span></div></div>
+      <div class="stat-card"><div class="stat-number">27</div><div class="stat-label"><span class="en">Researchers Trained</span><span class="zh">培育研究人員</span></div></div>
+      <div class="stat-card stat-dup"><div class="stat-number">20</div><div class="stat-label"><span class="en">Peer-Reviewed Articles</span><span class="zh">同儕審查期刊論文</span></div></div>
+      <div class="stat-card stat-dup"><div class="stat-number">7</div><div class="stat-label"><span class="en">Trainee-Led Articles</span><span class="zh">學員第一作者論文</span></div></div>
+      <div class="stat-card stat-dup"><div class="stat-number funding-figure"><span>$452.5K</span><span>NT$8.76M</span></div><div class="stat-label"><span class="en">Laboratory Funding</span><span class="zh">實驗室經費</span></div></div>
+      <div class="stat-card stat-dup"><div class="stat-number">26</div><div class="stat-label"><span class="en">Conference Proceedings</span><span class="zh">會議論文</span></div></div>
+      <div class="stat-card stat-dup"><div class="stat-number">27</div><div class="stat-label"><span class="en">Researchers Trained</span><span class="zh">培育研究人員</span></div></div>
+    </div>
+  </section>
+
+  <section class="research" id="research">
+    <div class="container">
+      <div class="research-header">
+        <span class="section-label" data-animate><span class="en">Research</span><span class="zh">研究</span></span>
+        <h2 data-animate><span class="en">Our Research Areas</span><span class="zh">研究領域</span></h2>
+        <p data-animate><span class="en">Combining scientific principles with clinical insights to advance rehabilitation science and technology</span><span class="zh">結合科學原理與臨床洞察，推動復健科學與技術發展</span></p>
+      </div>
+      <div class="research-grid">
+        <div class="research-card" data-animate>
+          <div class="research-card-bg">
+          </div>
+          <div class="research-card-content">
+            <svg class="research-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+            <h3><span class="en">Quantitative Medical Imaging</span><span class="zh">定量醫學影像</span></h3>
+            <p><span class="en">Developing ultrasound-based imaging techniques and radiomics for characterizing musculoskeletal tissue properties and early disease detection.</span><span class="zh">開發基於超音波的影像技術與影像組學，用於表徵肌肉骨骼組織特性及早期疾病偵測。</span></p>
+          </div>
+        </div>
+        <div class="research-card" data-animate>
+          <div class="research-card-bg">
+          </div>
+          <div class="research-card-content">
+            <svg class="research-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            <h3><span class="en">Clinical Biomechanics</span><span class="zh">臨床生物力學</span></h3>
+            <p><span class="en">Analyzing wheelchair mobility, upper limb function, and transfer techniques to optimize rehabilitation outcomes for spinal cord injury.</span><span class="zh">分析輪椅行動能力、上肢功能及轉位技術，以優化脊髓損傷患者之復健成果。</span></p>
+          </div>
+        </div>
+        <div class="research-card" data-animate>
+          <div class="research-card-bg">
+          </div>
+          <div class="research-card-content">
+            <svg class="research-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+            <h3><span class="en">Rehabilitation Medicine</span><span class="zh">復健醫學</span></h3>
+            <p><span class="en">Investigating neuromusculoskeletal mechanisms and developing early interventional paradigms to prevent secondary complications.</span><span class="zh">研究神經肌肉骨骼機制，發展早期介入模式以預防次併發症。</span></p>
+          </div>
+        </div>
+        <div class="research-card" data-animate>
+          <div class="research-card-bg">
+          </div>
+          <div class="research-card-content">
+            <svg class="research-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            <h3><span class="en">AI in Precision Medicine</span><span class="zh">精準醫療中的人工智慧</span></h3>
+            <p><span class="en">Applying machine learning and deep learning to develop predictive models for musculoskeletal screening and clinical decision support.</span><span class="zh">應用機器學習與深度學習，建立肌肉骨骼篩檢預測模型與臨床決策支援系統。</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery-section">
+    <div class="container">
+      <div class="gallery-header">
+        <span class="section-label" data-animate><span class="en">Lab</span><span class="zh">實驗室</span></span>
+        <h2 data-animate><span class="en">Research in Action</span><span class="zh">研究實景</span></h2>
+      </div>
+      <div class="gallery-grid">
+        <a class="gallery-item" data-animate href="https://doi.org/10.3389/fphy.2023.1075753" target="_blank" rel="noopener noreferrer">
+          <img src="images/gallery_1.webp" alt="Wearable Ultrasound System" loading="eager" width="600" height="400">
+          <div class="gallery-overlay"><span><span class="en">Wearable Ultrasound System</span><span class="zh">穿戴式超音波系統</span></span></div>
+          <div class="gallery-source">Lin et al., Frontiers in Physics, 2023</div>
+        </a>
+        <a class="gallery-item" data-animate href="https://doi.org/10.1002/pmrj.70097" target="_blank" rel="noopener noreferrer">
+          <img src="images/gallery_2.webp" alt="Rotator Cuff Muscle Quality" loading="eager" width="600" height="400">
+          <div class="gallery-overlay"><span><span class="en">Rotator Cuff Muscle Quality</span><span class="zh">旋轉袖肌肉品質</span></span></div>
+          <div class="gallery-source">Nasr et al., PM&amp;R, 2026</div>
+        </a>
+        <a class="gallery-item" data-animate href="https://doi.org/10.1155/2014/583951" target="_blank" rel="noopener noreferrer">
+          <img src="images/gallery_3.webp" alt="Subacromial Space Ultrasound" loading="eager" width="600" height="400">
+          <div class="gallery-overlay"><span><span class="en">Subacromial Space Ultrasound</span><span class="zh">肩峰下空間超音波</span></span></div>
+          <div class="gallery-source">Lin et al., BioMed Research International, 2014</div>
+        </a>
+        <a class="gallery-item" data-animate href="https://doi.org/10.1179/2045772314Y.0000000205" target="_blank" rel="noopener noreferrer">
+          <img src="images/gallery_4.webp" alt="Acromiohumeral Distance" loading="eager" width="600" height="400">
+          <div class="gallery-overlay"><span><span class="en">Acromiohumeral Distance</span><span class="zh">肩峰下距離測量</span></span></div>
+          <div class="gallery-source">Lin et al., J Spinal Cord Medicine, 2015</div>
+        </a>
+        <a class="gallery-item" data-animate href="https://doi.org/10.1371/journal.pone.0347233" target="_blank" rel="noopener noreferrer">
+          <img src="images/gallery_5.webp" alt="Resistance Exercise Study" loading="eager" width="600" height="400">
+          <div class="gallery-overlay"><span><span class="en">Resistance Exercise Study</span><span class="zh">阻力運動研究</span></span></div>
+          <div class="gallery-source">Nasr et al., PLOS ONE, 2026</div>
+        </a>
+        <a class="gallery-item" data-animate href="https://doi.org/10.3390/diagnostics13122011" target="_blank" rel="noopener noreferrer">
+          <img src="images/gallery_6.webp" alt="Rotator Cuff Imaging Review" loading="eager" width="600" height="400">
+          <div class="gallery-overlay"><span><span class="en">Rotator Cuff Imaging Review</span><span class="zh">旋轉袖影像綜述</span></span></div>
+          <div class="gallery-source">Nasr et al., Diagnostics, 2023</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="publications" id="publications">
+    <div class="container">
+      <div class="publications-header">
+        <div>
+          <span class="section-label" data-animate><span class="en">Publications</span><span class="zh">論文</span></span>
+          <h2 data-animate><span class="en">Selected Works</span><span class="zh">精選論文</span></h2>
+        </div>
+      </div>
+      <ul class="pub-list">
+        <li class="pub-item" data-animate>
+          <a class="pub-link" href="https://doi.org/10.3390/life16081270" target="_blank" rel="noopener noreferrer">
+            <span class="pub-number">01</span>
+            <div class="pub-details"><h3>Beyond Corticosteroids: Ultrasound-Guided Regenerative and Hydrodissection Therapies for Adhesive Capsulitis</h3><p class="pub-authors">Chang C.Y., Lin Y.S., Chen P.Y., Chou L.W.</p></div>
+            <span class="pub-journal">Life, 2026</span>
+          </a>
+        </li>
+        <li class="pub-item" data-animate>
+          <a class="pub-link" href="https://doi.org/10.1002/pmrj.70097" target="_blank" rel="noopener noreferrer">
+            <span class="pub-number">02</span>
+            <div class="pub-details"><h3>Quantitative Assessments of Ultrasound-Based Rotator Cuff Muscle Quality</h3><p class="pub-authors">Nasr A., Wang H., Khazzam M., Jain N.B., Lin Y.S.</p></div>
+            <span class="pub-journal">PM&amp;R, 2026</span>
+          </a>
+        </li>
+        <li class="pub-item" data-animate>
+          <a class="pub-link" href="https://doi.org/10.3390/muscles3020013" target="_blank" rel="noopener noreferrer">
+            <span class="pub-number">03</span>
+            <div class="pub-details"><h3>The Use of Dixon MRI Methods for Quantification of Rotator Cuff Fatty Infiltration</h3><p class="pub-authors">Nasr A., Harris J., Wang J, Khazzam M., Jain N.B., Tzen Y.T., Lin Y.S.</p></div>
+            <span class="pub-journal">Muscles, 2024</span>
+          </a>
+        </li>
+        <li class="pub-item" data-animate>
+          <a class="pub-link" href="https://doi.org/10.3390/biom14030349" target="_blank" rel="noopener noreferrer">
+            <span class="pub-number">04</span>
+            <div class="pub-details"><h3>Intersections of Fibrodysplasia Ossificans Progressiva and Traumatic Heterotopic Ossification</h3><p class="pub-authors">Juan C., Bancroft A.C., Choi J.H., Nunez J.H., Pagani C.A., Lin Y.S., Hsiao E.C., Levi B.</p></div>
+            <span class="pub-journal">Biomolecules, 2024</span>
+          </a>
+        </li>
+        <li class="pub-item" data-animate>
+          <a class="pub-link" href="https://doi.org/10.3390/jcm12185799" target="_blank" rel="noopener noreferrer">
+            <span class="pub-number">05</span>
+            <div class="pub-details"><h3>Perioperative Outcomes Following Total Shoulder Arthroplasty in Wheelchair Users</h3><p class="pub-authors">Prabhu P., Nasr A.J., Kasitinon D, Cabrera A, Lin Y.S.</p></div>
+            <span class="pub-journal">J Clin Med, 2023</span>
+          </a>
+        </li>
+        <li class="pub-item" data-animate>
+          <a class="pub-link" href="https://doi.org/10.3389/fphy.2023.1075753" target="_blank" rel="noopener noreferrer">
+            <span class="pub-number">06</span>
+            <div class="pub-details"><h3>Computer-Aided Quantitative Ultrasound Algorithm of Acromiohumeral Distance in SCI</h3><p class="pub-authors">Lin Y.S., Kim H., Seitz A., Tsai T.Y., Jain N.B.</p></div>
+            <span class="pub-journal">Frontiers in Physics, 2023</span>
+          </a>
+        </li>
+        <li class="pub-item" data-animate>
+          <a class="pub-link" href="https://doi.org/10.3390/jcm13010160" target="_blank" rel="noopener noreferrer">
+            <span class="pub-number">07</span>
+            <div class="pub-details"><h3>Incidence and Risk Factors of Post-operative Complications following Total Hip Arthroplasty</h3><p class="pub-authors">Lin Y.S., Declercq J.J., Ayers G.D., Gilmor R.J., Collett G., Jain N.B.</p></div>
+            <span class="pub-journal">J Clin Med, 2024</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="join" id="join">
+    <div class="container">
+      <div class="join-content">
+        <span class="section-label" data-animate><span class="en">Join Us</span><span class="zh">加入我們</span></span>
+        <h2 data-animate><span class="en">Open Position</span><span class="zh">招募職位</span></h2>
+        <p data-animate class="join-subtitle"><span class="en">We welcome a motivated student, intern, postdoctoral associate, research engineer, or clinical research coordinator.</span><span class="zh">我們歡迎有熱忱的學生、實習生、博士後研究員、研究工程師或臨床研究協調員加入。</span></p>
+        <div class="join-grid">
+          <div class="join-card" data-animate>
+            <div class="join-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="40" height="40"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 14l9-5-9-5-9 5 9 5z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
+            </div>
+            <h3><span class="en">Postdoctoral Associate</span><span class="zh">博士後研究員</span></h3>
+            <p><span class="en">Independent research in quantitative imaging, biomechanics, or rehabilitation AI.</span><span class="zh">獨立進行定量影像、生物力學或復健人工智慧研究。</span></p>
+          </div>
+          <div class="join-card" data-animate>
+            <div class="join-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="40" height="40"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            </div>
+            <h3><span class="en">Research Engineer</span><span class="zh">研究工程師</span></h3>
+            <p><span class="en">Build imaging, signal-processing, and machine-learning tools used in lab studies.</span><span class="zh">開發實驗室研究所用的影像、訊號處理與機器學習工具。</span></p>
+          </div>
+          <div class="join-card" data-animate>
+            <div class="join-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="40" height="40"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+            </div>
+            <h3><span class="en">Clinical Research Coordinator</span><span class="zh">臨床研究協調員</span></h3>
+            <p><span class="en">Coordinate study visits, data collection, and the day-to-day running of clinical studies.</span><span class="zh">協調研究訪視、資料收集與臨床研究的日常執行。</span></p>
+          </div>
+          <div class="join-card" data-animate>
+            <div class="join-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="40" height="40"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+            </div>
+            <h3><span class="en">PhD Student</span><span class="zh">博士班研究生</span></h3>
+            <p><span class="en">Position available for research in quantitative ultrasound imaging, biomechanics, or AI in rehabilitation.</span><span class="zh">研究方向包含定量超音波影像、生物力學或復健人工智慧。</span></p>
+          </div>
+          <div class="join-card" data-animate>
+            <div class="join-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="40" height="40"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            </div>
+            <h3><span class="en">Research Assistant</span><span class="zh">研究助理</span></h3>
+            <p><span class="en">Seeking candidates with experience in medical imaging, signal processing, or machine learning.</span><span class="zh">招募具有醫學影像、訊號處理或機器學習經驗之人才。</span></p>
+          </div>
+          <div class="join-card" data-animate>
+            <div class="join-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="40" height="40"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+            </div>
+            <h3><span class="en">Research Intern</span><span class="zh">研究實習生</span></h3>
+            <p><span class="en">Undergraduate and Master's students welcome for short-term research projects.</span><span class="zh">歡迎大學部及碩士班學生參與短期研究計畫。</span></p>
+          </div>
+        </div>
+        <div class="join-cta" data-animate>
+          <p><span class="en">Interested? Send your CV and research interests to</span><span class="zh">有興趣？請將您的履歷與研究興趣寄至</span></p>
+          <a href="mailto:yslin@mail.ndmutsgh.edu.tw" class="join-email">yslin@mail.ndmutsgh.edu.tw</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="donate" id="donate">
+    <div class="container">
+      <div class="donate-content">
+        <span class="section-label" data-animate><span class="en">Support</span><span class="zh">支持我們</span></span>
+        <h2 data-animate><span class="en">Donate to TriMED Lab</span><span class="zh">捐助診療一體研究與智慧醫療實驗室</span></h2>
+        <p data-animate class="donate-subtitle"><span class="en">Your support helps advance rehabilitation research and improve the lives of individuals with neuromusculoskeletal disorders.</span><span class="zh">您的支持將協助推動復健研究，改善神經肌肉骨骼疾患患者的生活。</span></p>
+        <div class="donate-options" data-animate>
+          <a href="https://fundraising.ndmutsgh.edu.tw/web/donate/donate.jsp?np_id=NP1770863557171" target="_blank" class="donate-btn">
+            <span class="en">Donate via NDMU</span><span class="zh">透過國防醫學大學捐款</span>
+          </a>
+          <a href="mailto:yslin@mail.ndmutsgh.edu.tw?subject=Donation%20Inquiry" class="donate-btn donate-btn-outline">
+            <span class="en">Contact for Donation</span><span class="zh">聯絡捐款事宜</span>
+          </a>
+        </div>
+        <p class="donate-note" data-animate><span class="en">Donations are tax-deductible. For international donors, please contact us for wire transfer details.</span><span class="zh">捐款可抵稅。國際捐款者請聯繫我們取得匯款資訊。</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <img class="contact-logo" src="images/trimed-logo.png?v=2k" alt="TriMED — Theranostic Research and Intelligent Medicine Lab">
+        <span class="section-label" data-animate><span class="en">Contact</span><span class="zh">聯絡</span></span>
+        <h2 data-animate><span class="en">Get in Touch</span><span class="zh">聯絡我們</span></h2>
+        <div class="contact-item" data-animate>
+          <h4><span class="en">Address</span><span class="zh">地址</span></h4>
+          <p><span class="en">Graduate Institute of Medical Sciences<br>National Defense Medical University<br>No. 161, Sec. 6, Minquan E. Rd., Neihu District<br>Taipei 114201, Taiwan</span><span class="zh">醫學科學研究所<br>國防醫學大學<br>台北市內湖區民權東路六段161號<br>台北 114201，台灣</span></p>
+        </div>
+        <div class="contact-item" data-animate>
+          <h4><span class="en">Email</span><span class="zh">電子郵件</span></h4>
+          <a href="mailto:yslin@mail.ndmutsgh.edu.tw">yslin@mail.ndmutsgh.edu.tw</a>
+        </div>
+        <div class="contact-item" data-animate>
+          <h4><span class="en">Phone</span><span class="zh">電話</span></h4>
+          <p>(02) 8792-3100 ext. 18635</p>
+        </div>
+      </div>
+      <form class="contact-form" data-animate>
+        <div class="form-group">
+          <label><span class="en">Name</span><span class="zh">姓名</span></label>
+          <input type="text" placeholder="Your name" data-en-placeholder="Your name" data-zh-placeholder="您的姓名">
+        </div>
+        <div class="form-group">
+          <label><span class="en">Email</span><span class="zh">電子郵件</span></label>
+          <input type="email" placeholder="your@email.com" data-en-placeholder="your@email.com" data-zh-placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label><span class="en">Message</span><span class="zh">訊息</span></label>
+          <textarea placeholder="Your message" data-en-placeholder="Your message" data-zh-placeholder="輸入您的訊息"></textarea>
+        </div>
+        <button type="submit" class="submit-btn"><span><span class="en">Send Message</span><span class="zh">送出訊息</span></span></button>
+      </form>
+    </div>
+  </section>
+
+<footer>
+    <div class="footer-links">
+      <a href="index-oct2026.html#about"><span class="en">About</span><span class="zh">關於</span></a>
+      <a href="index-oct2026.html#research"><span class="en">Research</span><span class="zh">研究</span></a>
+      <a href="index-oct2026.html#publications"><span class="en">Publications</span><span class="zh">論文</span></a>
+      <a href="team.html"><span class="en">Team</span><span class="zh">團隊</span></a>
+      <a href="team.html#alumni"><span class="en">Alumni</span><span class="zh">校友</span></a>
+      <a href="team.html#teaching"><span class="en">Courses & Instruction</span><span class="zh">課程與教學</span></a>
+      <a href="index-oct2026.html#donate"><span class="en">Donate</span><span class="zh">捐款</span></a>
+      <a href="index-oct2026.html#contact"><span class="en">Contact</span><span class="zh">聯絡</span></a>
+    </div>
+    <p><span class="en">&copy; 2026 TriMED Lab, National Defense Medical University. All rights reserved.</span><span class="zh">&copy; 2026 診療一體研究與智慧醫療實驗室，國防醫學大學。版權所有。</span></p>
+  </footer>
+
+  <script>
+    function setLang(lang) {
+      if (lang === 'zh') {
+        document.body.classList.add('lang-zh');
+        document.getElementById('btn-zh').classList.add('active');
+        document.getElementById('btn-en').classList.remove('active');
+        var mobileZh = document.getElementById('btn-zh-mobile');
+        var mobileEn = document.getElementById('btn-en-mobile');
+        if (mobileZh) mobileZh.classList.add('active');
+        if (mobileEn) mobileEn.classList.remove('active');
+      } else {
+        document.body.classList.remove('lang-zh');
+        document.getElementById('btn-en').classList.add('active');
+        document.getElementById('btn-zh').classList.remove('active');
+        var mobileZh = document.getElementById('btn-zh-mobile');
+        var mobileEn = document.getElementById('btn-en-mobile');
+        if (mobileEn) mobileEn.classList.add('active');
+        if (mobileZh) mobileZh.classList.remove('active');
+      }
+      document.querySelectorAll('[data-en-placeholder]').forEach(function(el) {
+        el.placeholder = lang === 'zh' ? el.dataset.zhPlaceholder : el.dataset.enPlaceholder;
+      });
+    }
+
+    var hamburgerBtn = document.getElementById('hamburger-btn');
+    var mobileOverlay = document.getElementById('mobile-overlay');
+    var mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+    function closeMobileMenu() {
+      hamburgerBtn.classList.remove('active');
+      mobileOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function toggleMobileMenu() {
+      hamburgerBtn.classList.toggle('active');
+      mobileOverlay.classList.toggle('active');
+      document.body.style.overflow = mobileOverlay.classList.contains('active') ? 'hidden' : '';
+    }
+
+    hamburgerBtn.addEventListener('click', toggleMobileMenu);
+    hamburgerBtn.addEventListener('touchstart', function(e) { e.preventDefault(); toggleMobileMenu(); }, { passive: false });
+
+    mobileNavLinks.forEach(function(link) {
+      link.addEventListener('click', closeMobileMenu);
+      link.addEventListener('touchstart', function(e) { e.preventDefault(); closeMobileMenu(); window.location.href = this.href; }, { passive: false });
+    });
+
+    var navbar = document.getElementById('navbar');
+    var lastScrollY = 0;
+    window.addEventListener('scroll', function() {
+      var scrollY = window.pageYOffset || document.documentElement.scrollTop;
+      if (scrollY > 80) { navbar.classList.add('scrolled'); } else { navbar.classList.remove('scrolled'); }
+      lastScrollY = scrollY;
+    }, { passive: true });
+
+    var heroContent = document.querySelector('.hero-content');
+    window.addEventListener('scroll', function() {
+      var scrolled = window.pageYOffset || document.documentElement.scrollTop;
+      if (heroContent && scrolled < window.innerHeight) {
+        heroContent.style.transform = 'translateY(' + (scrolled * 0.4) + 'px)';
+        heroContent.style.opacity = 1 - (scrolled / window.innerHeight);
+      }
+    }, { passive: true });
+
+    var observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) { entry.target.classList.add('visible'); }
+      });
+    }, observerOptions);
+    document.querySelectorAll('[data-animate]').forEach(function(el) { observer.observe(el); });
+
+    setTimeout(function() {
+      document.querySelectorAll('[data-animate]').forEach(function(el) {
+        el.classList.add('visible');
+      });
+    }, 2000);
+
+    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        var target = document.querySelector(this.getAttribute('href'));
+        if (target) { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      });
+    });
+
+    window.addEventListener('scroll', function() {
+      var items = document.querySelectorAll('.gallery-item img');
+      items.forEach(function(img) {
+        var rect = img.getBoundingClientRect();
+        var parallax = (rect.top - window.innerHeight / 2) * 0.05;
+        img.style.transform = 'translateY(' + parallax + 'px)';
+      });
+    }, { passive: true });
+  </script>
+</body>
+</html>

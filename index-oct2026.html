@@ -183,7 +183,7 @@
       position: relative; min-height: 100svh; min-height: 100dvh;
       display: flex; flex-direction: column; justify-content: center; align-items: center;
       text-align: center; background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
-      overflow: hidden; padding-top: env(safe-area-inset-top); padding-bottom: calc(5.5rem + env(safe-area-inset-bottom));
+      overflow: visible; padding-top: env(safe-area-inset-top); padding-bottom: calc(5.5rem + env(safe-area-inset-bottom));
     }
     .hero::before {
       content: ''; position: absolute; inset: 0;
@@ -214,6 +214,19 @@
       font-size: 1.25rem; font-weight: 300; color: rgba(255,255,255,0.7); max-width: 500px;
       margin: 0 auto; opacity: 0; transform: translateY(20px); animation: fadeUp 1s 0.7s forwards;
     }
+    .hero-director {
+      display: flex; align-items: center; justify-content: center; gap: 1rem;
+      margin: 1.75rem auto 0; max-width: 28rem; text-align: left;
+      opacity: 0; transform: translateY(20px); animation: fadeUp 1s 0.9s forwards;
+    }
+    .hero-director img {
+      width: 84px; height: 84px; max-width: 84px; border-radius: 50%;
+      object-fit: cover; object-position: center 15%; flex: none;
+      border: 2px solid rgba(255,255,255,0.9);
+    }
+    .hero-director-name { color: #fff; font-size: 1.2rem; font-weight: 600; margin: 0; line-height: 1.3; }
+    .hero-director-zh { color: rgba(255,255,255,0.88); font-size: 1rem; margin: 0.1rem 0 0; }
+    .hero-director-role { color: rgba(255,255,255,0.75); font-size: 0.95rem; margin: 0.2rem 0 0; }
     .contact-logo {
       width: min(240px, 100%); height: auto; display: block; margin-bottom: 1.5rem;
       background: #fff; border-radius: 14px; padding: 0.55rem 0.7rem 0.35rem;
@@ -493,8 +506,10 @@
       color: #60a5fa;
     }
     .stat-label { font-size: 0.9rem; opacity: 0.85; text-transform: uppercase; letter-spacing: 0.06em; line-height: 1.45; overflow-wrap: break-word; }
-    .stat-number.funding-figure { font-size: 2.2rem; line-height: 1.2; }
-    .stat-number.funding-figure span { display: block; }
+    .stat-card.funding-card { width: 340px; text-align: left; padding: 1.6rem 1.4rem; }
+    .fund-line + .fund-line { margin-top: 0.95rem; padding-top: 0.95rem; border-top: 1px solid rgba(255,255,255,0.22); }
+    .funding-card .stat-number { font-size: 1.7rem; line-height: 1.25; margin-bottom: 0.2rem; }
+    .funding-card .stat-label { text-transform: none; letter-spacing: 0.01em; }
     .impact-note {
       color: rgba(255,255,255,0.92); max-width: 42rem; margin: 1rem auto 0;
       font-size: 1rem; line-height: 1.6; padding: 0 1.5rem;
@@ -630,7 +645,9 @@
       .team-member h4 { font-size: 1rem; }
       .stat-card { width: 250px; padding: 2rem; }
       .stat-number { font-size: 3rem; }
-      .stat-number.funding-figure { font-size: 1.65rem; }
+      .stat-card.funding-card { width: 280px; }
+      .funding-card .stat-number { font-size: 1.35rem; }
+      .hero-director img { width: 72px; height: 72px; max-width: 72px; }
       .contact-info h2, .research-header h2, .gallery-header h2 { font-size: 2rem; }
     }
     @media print {
@@ -683,7 +700,7 @@
     .join-card { background: var(--bg-alt); border-radius: 16px; padding: 3rem 2rem; text-align: left; transition: all 0.4s; border: 1px solid transparent; }
     .join-card:hover { border-color: var(--accent); transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.06); }
     .join-icon { color: var(--accent); margin-bottom: 1.5rem; }
-    .join-card h3 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.75rem; overflow-wrap: break-word; }
+    .join-card h3 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0; overflow-wrap: break-word; }
     .join-card p { font-size: 0.95rem; color: var(--text-light); line-height: 1.7; overflow-wrap: break-word; }
     .join-cta { margin-top: 2rem; }
     .join-cta p { font-size: 1rem; color: var(--text-light); margin-bottom: 0.5rem; }
@@ -769,6 +786,14 @@
       <img class="hero-logo" src="images/trimed-logo.png?v=2k" alt="TriMED — Theranostic Research and Intelligent Medicine Lab">
       <h1>TriMED<br>LAB</h1>
       <p class="hero-tagline"><span class="en">Quantitative Medical Imaging &amp; Rehabilitation Science</span><span class="zh">定量醫學影像與復健科學</span></p>
+      <div class="hero-director">
+        <img src="images/yen-sheng-lin.jpg" alt="Yen-Sheng Lin" width="731" height="1024">
+        <div>
+          <p class="hero-director-name">Yen-Sheng Lin, PhD</p>
+          <p class="hero-director-zh">林彥聖</p>
+          <p class="hero-director-role"><span class="en">Lab Director</span><span class="zh">實驗室主任</span></p>
+        </div>
+      </div>
     </div>
     <div class="scroll-indicator">
       <span><span class="en">Scroll</span><span class="zh">向下捲動</span></span>
@@ -939,17 +964,17 @@
   <section class="horizontal-section">
     <div class="horizontal-title">
       <h2 data-animate><span class="en">Our Impact</span><span class="zh">我們的影響力</span></h2>
-      <p class="impact-note"><span class="en">Laboratory totals. Peer-reviewed journal articles are counted apart from conference proceedings and include trainee-led papers.</span><span class="zh">實驗室合計。同儕審查期刊論文與會議論文分開計算，並包含學員第一作者論文。</span></p>
+      <p class="impact-note"><span class="en">Laboratory totals. Research funding, postdoctoral training awards, and New Taiwan dollar awards are listed separately. Journal articles are counted apart from conference proceedings and include trainee-led papers.</span><span class="zh">實驗室合計。研究經費、博士後培訓獎助與新臺幣獎助分開列出。同儕審查期刊論文與會議論文分開計算，並包含學員第一作者論文。</span></p>
     </div>
     <div class="horizontal-track">
       <div class="stat-card"><div class="stat-number">20</div><div class="stat-label"><span class="en">Peer-Reviewed Articles</span><span class="zh">同儕審查期刊論文</span></div></div>
       <div class="stat-card"><div class="stat-number">7</div><div class="stat-label"><span class="en">Trainee-Led Articles</span><span class="zh">學員第一作者論文</span></div></div>
-      <div class="stat-card"><div class="stat-number funding-figure"><span>$452.5K</span><span>NT$8.76M</span></div><div class="stat-label"><span class="en">Laboratory Funding</span><span class="zh">實驗室經費</span></div></div>
+      <div class="stat-card funding-card"><div class="fund-line"><div class="stat-number">More than $300,000</div><div class="stat-label"><span class="en">Research Funding</span><span class="zh">研究經費</span></div></div><div class="fund-line"><div class="stat-number">$300,000</div><div class="stat-label"><span class="en">Postdoctoral Training Awards, as PI</span><span class="zh">博士後培訓獎助（計畫主持人）</span></div></div><div class="fund-line"><div class="stat-number">NT$8.76M</div><div class="stat-label"><span class="en">Awards in New Taiwan Dollars</span><span class="zh">新臺幣獎助</span></div></div></div>
       <div class="stat-card"><div class="stat-number">26</div><div class="stat-label"><span class="en">Conference Proceedings</span><span class="zh">會議論文</span></div></div>
       <div class="stat-card"><div class="stat-number">27</div><div class="stat-label"><span class="en">Researchers Trained</span><span class="zh">培育研究人員</span></div></div>
       <div class="stat-card stat-dup"><div class="stat-number">20</div><div class="stat-label"><span class="en">Peer-Reviewed Articles</span><span class="zh">同儕審查期刊論文</span></div></div>
       <div class="stat-card stat-dup"><div class="stat-number">7</div><div class="stat-label"><span class="en">Trainee-Led Articles</span><span class="zh">學員第一作者論文</span></div></div>
-      <div class="stat-card stat-dup"><div class="stat-number funding-figure"><span>$452.5K</span><span>NT$8.76M</span></div><div class="stat-label"><span class="en">Laboratory Funding</span><span class="zh">實驗室經費</span></div></div>
+      <div class="stat-card funding-card stat-dup"><div class="fund-line"><div class="stat-number">More than $300,000</div><div class="stat-label"><span class="en">Research Funding</span><span class="zh">研究經費</span></div></div><div class="fund-line"><div class="stat-number">$300,000</div><div class="stat-label"><span class="en">Postdoctoral Training Awards, as PI</span><span class="zh">博士後培訓獎助（計畫主持人）</span></div></div><div class="fund-line"><div class="stat-number">NT$8.76M</div><div class="stat-label"><span class="en">Awards in New Taiwan Dollars</span><span class="zh">新臺幣獎助</span></div></div></div>
       <div class="stat-card stat-dup"><div class="stat-number">26</div><div class="stat-label"><span class="en">Conference Proceedings</span><span class="zh">會議論文</span></div></div>
       <div class="stat-card stat-dup"><div class="stat-number">27</div><div class="stat-label"><span class="en">Researchers Trained</span><span class="zh">培育研究人員</span></div></div>
     </div>
@@ -1118,42 +1143,36 @@
               <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="40" height="40"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 14l9-5-9-5-9 5 9 5z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
             </div>
             <h3><span class="en">Postdoctoral Associate</span><span class="zh">博士後研究員</span></h3>
-            <p><span class="en">Independent research in quantitative imaging, biomechanics, or rehabilitation AI.</span><span class="zh">獨立進行定量影像、生物力學或復健人工智慧研究。</span></p>
           </div>
           <div class="join-card" data-animate>
             <div class="join-icon">
               <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="40" height="40"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
             </div>
             <h3><span class="en">Research Engineer</span><span class="zh">研究工程師</span></h3>
-            <p><span class="en">Build imaging, signal-processing, and machine-learning tools used in lab studies.</span><span class="zh">開發實驗室研究所用的影像、訊號處理與機器學習工具。</span></p>
           </div>
           <div class="join-card" data-animate>
             <div class="join-icon">
               <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="40" height="40"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
             </div>
             <h3><span class="en">Clinical Research Coordinator</span><span class="zh">臨床研究協調員</span></h3>
-            <p><span class="en">Coordinate study visits, data collection, and the day-to-day running of clinical studies.</span><span class="zh">協調研究訪視、資料收集與臨床研究的日常執行。</span></p>
           </div>
           <div class="join-card" data-animate>
             <div class="join-icon">
               <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="40" height="40"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
             </div>
             <h3><span class="en">PhD Student</span><span class="zh">博士班研究生</span></h3>
-            <p><span class="en">Position available for research in quantitative ultrasound imaging, biomechanics, or AI in rehabilitation.</span><span class="zh">研究方向包含定量超音波影像、生物力學或復健人工智慧。</span></p>
           </div>
           <div class="join-card" data-animate>
             <div class="join-icon">
               <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="40" height="40"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
             </div>
             <h3><span class="en">Research Assistant</span><span class="zh">研究助理</span></h3>
-            <p><span class="en">Seeking candidates with experience in medical imaging, signal processing, or machine learning.</span><span class="zh">招募具有醫學影像、訊號處理或機器學習經驗之人才。</span></p>
           </div>
           <div class="join-card" data-animate>
             <div class="join-icon">
               <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="40" height="40"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
             </div>
             <h3><span class="en">Research Intern</span><span class="zh">研究實習生</span></h3>
-            <p><span class="en">Undergraduate and Master's students welcome for short-term research projects.</span><span class="zh">歡迎大學部及碩士班學生參與短期研究計畫。</span></p>
           </div>
         </div>
         <div class="join-cta" data-animate>

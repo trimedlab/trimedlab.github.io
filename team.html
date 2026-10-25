@@ -266,6 +266,7 @@
       .team-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 768px) {
+      .kpi-card .fund-line { grid-template-columns: 1fr; }
       .hamburger { display: flex; }
       nav { padding: 0.65rem 1rem; flex-wrap: nowrap; }
       .nav-logo img { height: 40px; width: 36px; max-width: 36px; max-height: 40px; }
@@ -324,8 +325,10 @@
     .kpi-grid {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-bottom: 2.5rem;
     }
-    .kpi-funding { font-size: 1.2rem; line-height: 1.25; }
-    .kpi-funding span { display: block; }
+    .kpi-card.funding-card { grid-column: 1 / -1; text-align: left; }
+    .kpi-card .fund-line { display: grid; grid-template-columns: minmax(11rem, 16rem) 1fr; gap: 0.25rem 1rem; align-items: baseline; }
+    .kpi-card .fund-line + .fund-line { margin-top: 0.85rem; padding-top: 0.85rem; border-top: 1px solid #e2e8f0; }
+    .kpi-card.funding-card .kpi-number { font-size: 1.35rem; margin-bottom: 0; }
     .kpi-scope { margin: 0 0 0.75rem; color: var(--text-light); font-size: 0.95rem; }
     .kpi-card {
       background: #f8fafc; border-radius: 12px; padding: 1.5rem; text-align: center;
@@ -406,11 +409,11 @@
       <div class="team-hero" style="margin-bottom:3rem;">
         <div class="kpi-header" style="display:flex;align-items:center;gap:2rem;flex-wrap:wrap;">
           <div class="team-avatar pi-avatar" style="width:180px;height:180px;border-radius:50%;overflow:hidden;border:3px solid rgba(96,165,250,0.5);">
-            <img src="images/pi_avatar.svg" alt="Dr. Yen-Sheng Lin" style="width:100%;height:100%;object-fit:cover;">
+            <img src="images/yen-sheng-lin.jpg" alt="Yen-Sheng Lin" style="width:100%;height:100%;object-fit:cover;object-position:center 15%;">
           </div>
           <div class="kpi-title">
             <h1 style="font-size:2rem;margin-bottom:0.5rem;"><span class="en">Yen-Sheng (Johnny) Lin, PhD, PMP</span><span class="zh">林彥聖 博士</span></h1>
-            <p class="kpi-subtitle" style="color:#93c5fd;font-size:1.1rem;"><span class="en">Director, TriMED Lab</span><span class="zh">TriMED 實驗室主任</span></p>
+            <p class="kpi-subtitle" style="color:#93c5fd;font-size:1.1rem;"><span class="en">Lab Director, TriMED Lab</span><span class="zh">TriMED 實驗室主任</span></p>
             <p class="kpi-subtitle" style="color:#60a5fa;font-size:1rem;"><span class="en">Assistant Professor, Graduate Institute of Medical Sciences, National Defense Medical University</span><span class="zh">國防醫學大學醫學科學研究所助理教授</span></p>
           </div>
         </div>
@@ -426,9 +429,10 @@
           <div class="kpi-number">7</div>
           <div class="kpi-label"><span class="en">Trainee-Led Articles</span><span class="zh">學員第一作者論文</span></div>
         </div>
-        <div class="kpi-card">
-          <div class="kpi-number kpi-funding"><span>$452.5K</span><span>NT$8.76M</span></div>
-          <div class="kpi-label"><span class="en">Laboratory Funding</span><span class="zh">實驗室經費</span></div>
+        <div class="kpi-card funding-card">
+          <div class="fund-line"><div class="kpi-number">More than $300,000</div><div class="kpi-label"><span class="en">Research Funding</span><span class="zh">研究經費</span></div></div>
+          <div class="fund-line"><div class="kpi-number">$300,000</div><div class="kpi-label"><span class="en">Postdoctoral Training Awards, as PI</span><span class="zh">博士後培訓獎助（計畫主持人）</span></div></div>
+          <div class="fund-line"><div class="kpi-number">NT$8.76M</div><div class="kpi-label"><span class="en">Awards in New Taiwan Dollars</span><span class="zh">新臺幣獎助</span></div></div>
         </div>
         <div class="kpi-card">
           <div class="kpi-number">26</div>
@@ -814,10 +818,10 @@
     <div class="kpi-modal-content">
       <button class="kpi-close" onclick="closeKPI()">&times;</button>
       <div class="kpi-header">
-        <div class="kpi-avatar"><img src="images/pi_avatar.svg" alt="Dr. Yen-Sheng Lin" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></div>
+        <div class="kpi-avatar"><img src="images/yen-sheng-lin.jpg" alt="Yen-Sheng Lin" style="width:100%;height:100%;object-fit:cover;object-position:center 15%;border-radius:50%;"></div>
         <div class="kpi-title">
           <h2><span class="en">Yen-Sheng (Johnny) Lin, PhD, PMP</span><span class="zh">林彥聖 博士</span></h2>
-          <p class="kpi-subtitle"><span class="en">Assistant Professor, Graduate Institute of Medical Sciences</span><span class="zh">醫學科學研究所助理教授</span></p>
+          <p class="kpi-subtitle"><span class="en">Lab Director and Assistant Professor, Graduate Institute of Medical Sciences</span><span class="zh">實驗室主任、醫學科學研究所助理教授</span></p>
         </div>
       </div>
       
@@ -831,9 +835,10 @@
           <div class="kpi-number">7</div>
           <div class="kpi-label"><span class="en">Trainee-Led Articles</span><span class="zh">學員第一作者論文</span></div>
         </div>
-        <div class="kpi-card">
-          <div class="kpi-number kpi-funding"><span>$452.5K</span><span>NT$8.76M</span></div>
-          <div class="kpi-label"><span class="en">Laboratory Funding</span><span class="zh">實驗室經費</span></div>
+        <div class="kpi-card funding-card">
+          <div class="fund-line"><div class="kpi-number">More than $300,000</div><div class="kpi-label"><span class="en">Research Funding</span><span class="zh">研究經費</span></div></div>
+          <div class="fund-line"><div class="kpi-number">$300,000</div><div class="kpi-label"><span class="en">Postdoctoral Training Awards, as PI</span><span class="zh">博士後培訓獎助（計畫主持人）</span></div></div>
+          <div class="fund-line"><div class="kpi-number">NT$8.76M</div><div class="kpi-label"><span class="en">Awards in New Taiwan Dollars</span><span class="zh">新臺幣獎助</span></div></div>
         </div>
         <div class="kpi-card">
           <div class="kpi-number">26</div>

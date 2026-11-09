@@ -676,6 +676,11 @@
     .news-date { font-size: 0.85rem; font-weight: 600; color: var(--accent); letter-spacing: 0.05em; padding-top: 0.3rem; white-space: nowrap; }
     .news-content h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; line-height: 1.4; }
     .news-content p { font-size: 1rem; color: var(--text-light); line-height: 1.7; }
+    .news-photos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-top: 1.1rem; }
+    .news-photos figure { margin: 0; min-width: 0; }
+    .news-photos a { display: block; min-width: 0; min-height: 0; border-radius: 10px; overflow: hidden; }
+    .news-photos img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; display: block; }
+    .news-photos figcaption { margin-top: 0.4rem; font-size: 0.8rem; line-height: 1.4; color: var(--text-light); text-align: center; }
 
     /* Join Us */
     .join { background: var(--bg); padding: 10rem 3rem; }
@@ -717,6 +722,7 @@
     }
     @media (max-width: 768px) {
       .news-item { grid-template-columns: 1fr; gap: 0.5rem; }
+      .news-photos { grid-template-columns: 1fr; }
       .join { padding: 5rem 1.25rem; }
       .join-content h2 { font-size: 2.4rem; }
       .join-grid { grid-template-columns: 1fr; gap: 1.25rem; }
@@ -808,12 +814,26 @@
         <h2 data-animate><span class="en">Lab News</span><span class="zh">實驗室最新消息</span></h2>
       </div>
       <div class="news-grid">
-        <!-- SonoMedic finalist -->
+        <!-- SonoMedic finals and honorable mention -->
         <div class="news-item" data-animate>
-          <div class="news-date"><span class="en">2026</span><span class="zh">2026年</span></div>
+          <div class="news-date"><span class="en">Nov 2026</span><span class="zh">2026年11月</span></div>
           <div class="news-content">
-            <h3><span class="en">SonoMedic Named TWmedica Finalist</span><span class="zh">SonoMedic 入圍台灣醫＋加速器決賽</span></h3>
-            <p><span class="en">Team leader for SonoMedic, an AI-guided bedside ultrasound platform for musculoskeletal and sarcopenia assessment, in the Incubation Track of the TWmedica Medical Startup Accelerator (Industrial Technology Research Institute, MacKay Memorial Hospital, and Tri-Service General Hospital). Finals are November 2, 2026.</span><span class="zh">帶領 SonoMedic 團隊入圍台灣醫＋加速器孵化育成組決賽。SonoMedic 為床邊超音波人工智慧平台，用於肌肉骨骼與肌少症評估；主辦單位為工研院、馬偕紀念醫院與三軍總醫院。決賽日期為 2026 年 11 月 2 日。</span></p>
+            <h3><span class="en"><a class="paper-link" href="https://twmedica.com/news/2026-%E5%8F%B0%E7%81%A3%E9%86%AB-%E5%8A%A0%E9%80%9F%E5%99%A8%E9%A6%96%E5%B1%86%E5%BE%97%E7%8D%8E%E5%9C%98%E9%9A%8A%E6%8F%AD%E6%9B%89-14%E7%B5%84%E9%86%AB%E7%99%82%E5%89%B5%E6%96%B0%E5%9C%98%E9%9A%8A%E5%B1%95%E7%8F%BE%E8%87%A8%E5%BA%8A%E5%89%B5%E6%96%B0%E5%AF%A6%E5%8A%9B" target="_blank" rel="noopener noreferrer">SonoMedic Receives Honorable Mention at the T+ MediC Finals</a></span><span class="zh"><a class="paper-link" href="https://twmedica.com/news/2026-%E5%8F%B0%E7%81%A3%E9%86%AB-%E5%8A%A0%E9%80%9F%E5%99%A8%E9%A6%96%E5%B1%86%E5%BE%97%E7%8D%8E%E5%9C%98%E9%9A%8A%E6%8F%AD%E6%9B%89-14%E7%B5%84%E9%86%AB%E7%99%82%E5%89%B5%E6%96%B0%E5%9C%98%E9%9A%8A%E5%B1%95%E7%8F%BE%E8%87%A8%E5%BA%8A%E5%89%B5%E6%96%B0%E5%AF%A6%E5%8A%9B" target="_blank" rel="noopener noreferrer">SonoMedic 獲台灣醫＋加速器孵化育成組佳作</a></span></h3>
+            <p><span class="en">On November 2, 2026, at MacKay Memorial Hospital, Yen-Sheng Lin presented 聲援 SonoMedic, an AI-guided bedside ultrasound platform for musculoskeletal and sarcopenia assessment. The team received an honorable mention in the Incubation Track of the T+ MediC Accelerator Competition, organized by MacKay Memorial Hospital and Tri-Service General Hospital and carried out by the Industrial Technology Research Institute.</span><span class="zh">2026 年 11 月 2 日，林彥聖於臺北馬偕紀念醫院進行聲援 SonoMedic 決選簡報。SonoMedic 為床邊超音波人工智慧平台，用於肌肉骨骼與肌少症評估，獲台灣醫＋加速器孵化育成組佳作。本競賽由馬偕紀念醫院與三軍總醫院共同主辦、工業技術研究院執行。</span></p>
+            <div class="news-photos">
+              <figure>
+                <a href="images/sonomedic-2026-pitch.jpg" target="_blank" rel="noopener noreferrer"><img src="images/sonomedic-2026-pitch.jpg" alt="Yen-Sheng Lin presenting the SonoMedic pitch"></a>
+                <figcaption><span class="en">Finals pitch</span><span class="zh">決選簡報</span></figcaption>
+              </figure>
+              <figure>
+                <a href="images/sonomedic-2026-stage.jpg" target="_blank" rel="noopener noreferrer"><img src="images/sonomedic-2026-stage.jpg" alt="SonoMedic on stage at the T+ MediC finals"></a>
+                <figcaption><span class="en">On stage</span><span class="zh">決選舞台</span></figcaption>
+              </figure>
+              <figure>
+                <a href="images/sonomedic-2026-award.jpg" target="_blank" rel="noopener noreferrer"><img src="images/sonomedic-2026-award.jpg" alt="SonoMedic at the T+ MediC award ceremony"></a>
+                <figcaption><span class="en">Award ceremony</span><span class="zh">頒獎典禮</span></figcaption>
+              </figure>
+            </div>
           </div>
         </div>
         <!-- Invited lectures -->

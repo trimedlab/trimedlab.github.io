@@ -213,6 +213,7 @@
       max-width: 1200px; margin: 0 auto;
     }
     .team-member {
+      position: relative;
       text-align: center; opacity: 0; transform: translateY(40px) scale(0.9); transition: all 0.8s;
     }
     .team-member.visible { opacity: 1; transform: translateY(0) scale(1); }
@@ -249,6 +250,30 @@
       border-color: var(--accent);
     }
     .team-member h4 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.25rem; }
+    .member-toggle {
+      appearance: none; background: none; border: 0; padding: 0.15rem 0.2rem;
+      font: inherit; font-size: 1.15rem; font-weight: 600; color: inherit;
+      cursor: pointer; text-decoration: underline; text-underline-offset: 0.18em;
+    }
+    .member-toggle::after {
+      content: ""; display: inline-block; margin-left: 0.4em;
+      border: 5px solid transparent; border-top-color: currentColor;
+      vertical-align: 0.15em;
+    }
+    .member-toggle[aria-expanded="true"] { color: var(--accent); }
+    .member-toggle[aria-expanded="true"]::after {
+      border-top-color: transparent; border-bottom-color: currentColor;
+      vertical-align: 0.35em;
+    }
+    .team-member:has(.member-dropdown.open) { z-index: 6; }
+    .member-dropdown {
+      display: none; position: absolute; z-index: 7; top: calc(100% + 0.45rem); right: 0;
+      width: min(22rem, calc(100vw - 2rem)); padding: 0.95rem 1rem; text-align: left;
+      background: #fff; border: 1px solid #e5e7eb; border-radius: 12px;
+      box-shadow: 0 16px 36px rgba(15, 23, 42, 0.16); color: var(--text);
+    }
+    .member-dropdown.open { display: block; }
+    .member-dropdown p { margin: 0; color: var(--text); font-size: 0.9rem; line-height: 1.65; }
     .team-member p { font-size: 0.9rem; color: var(--text-light); }
 
     .container { max-width: 1400px; margin: 0 auto; }
@@ -494,10 +519,13 @@
           <p style="font-size:0.85rem;"><span class="en">Graduate Institute of Life Sciences, National Defense Medical University</span><span class="zh">國防醫學大學生命科學研究所</span></p>
         </div>
         <div class="team-member" data-animate>
-          <div class="team-avatar"><div class="team-avatar-placeholder" style="background:rgba(168,85,247,0.15);color:#7c3aed;">AY</div></div>
-          <h4>Alex Ye</h4>
+          <div class="team-avatar"><img src="images/alex-ye.jpg" alt="Alex Ye" style="width:100%;height:100%;object-fit:cover;object-position:center 18%;"></div>
+          <h4><button type="button" class="member-toggle" aria-expanded="false" aria-controls="alex-ye-bio">Alex Ye</button></h4>
           <p><span class="en">Master's Student, 2026–present</span><span class="zh">碩士生，2026–至今</span></p>
           <p style="font-size:0.85rem;"><span class="en">Global Health, National Taiwan University</span><span class="zh">全球衛生學程，國立台灣大學</span></p>
+          <div class="member-dropdown" id="alex-ye-bio">
+            <p><span class="en">Alex Ye is from Connecticut in the U.S. and is currently a Master's student in Global Health at National Taiwan University. Alex is interested in applying machine and deep learning to public and global health initiatives such as AI echocardiography. Alex previously studied computer science and geography at Dartmouth College, where he was also captain of the swim team. He has one cat.</span><span class="zh">Alex Ye 來自美國康乃狄克州，目前為國立台灣大學全球衛生碩士生。他有興趣將機器學習與深度學習應用於公共衛生與全球衛生，例如人工智慧超音波心動圖。他先前於達特茅斯學院修讀電腦科學與地理，並擔任游泳校隊隊長。他養了一隻貓。</span></p>
+          </div>
         </div>
         <div class="team-member" data-animate>
           <div class="team-avatar"><div class="team-avatar-placeholder" style="background:rgba(96,165,250,0.15);color:#2563eb;">JC</div></div>
@@ -992,8 +1020,33 @@
     document.getElementById('kpiModal').addEventListener('click', function(e) {
       if (e.target === this) closeKPI();
     });
+    function closeMemberMenus() {
+      document.querySelectorAll('.member-toggle').forEach(function(btn) {
+        btn.setAttribute('aria-expanded', 'false');
+        var panel = document.getElementById(btn.getAttribute('aria-controls'));
+        if (panel) panel.classList.remove('open');
+      });
+    }
+    document.querySelectorAll('.member-toggle').forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        var panel = document.getElementById(btn.getAttribute('aria-controls'));
+        var willOpen = btn.getAttribute('aria-expanded') !== 'true';
+        closeMemberMenus();
+        if (willOpen) {
+          btn.setAttribute('aria-expanded', 'true');
+          panel.classList.add('open');
+        }
+      });
+    });
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.member-dropdown') && !e.target.closest('.member-toggle')) closeMemberMenus();
+    });
     document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') closeKPI();
+      if (e.key === 'Escape') {
+        closeKPI();
+        closeMemberMenus();
+      }
     });
   </script>
 </body>
